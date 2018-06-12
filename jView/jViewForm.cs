@@ -28,17 +28,12 @@ namespace jView
             InitializeComponent();
         }
 
-        private void exitMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void ExitMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void openFileButton_Click(object sender, EventArgs e)
+        private void OpenFileButton_Click(object sender, EventArgs e)
         {
             //
             GetFile();
