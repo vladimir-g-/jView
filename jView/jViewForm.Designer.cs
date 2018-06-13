@@ -28,21 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Node4");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Node1", new System.Windows.Forms.TreeNode[] {
-            treeNode17});
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Node5");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Node6");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Node2", new System.Windows.Forms.TreeNode[] {
-            treeNode19,
-            treeNode20});
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Node7");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Node3", new System.Windows.Forms.TreeNode[] {
-            treeNode22});
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Node0", new System.Windows.Forms.TreeNode[] {
-            treeNode18,
-            treeNode21,
-            treeNode23});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(jViewForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,9 +39,11 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
+            this.originalFileText = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,7 +71,7 @@
             // OpenMenuItem
             // 
             this.OpenMenuItem.Name = "OpenMenuItem";
-            this.OpenMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.OpenMenuItem.Size = new System.Drawing.Size(120, 26);
             this.OpenMenuItem.Text = "Open";
             this.OpenMenuItem.ToolTipText = "Open file";
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
@@ -92,7 +79,7 @@
             // ExitMenuItem
             // 
             this.ExitMenuItem.Name = "ExitMenuItem";
-            this.ExitMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.ExitMenuItem.Size = new System.Drawing.Size(120, 26);
             this.ExitMenuItem.Text = "Exit";
             this.ExitMenuItem.ToolTipText = "Close program";
             this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
@@ -131,29 +118,12 @@
             this.jNodesTree.Location = new System.Drawing.Point(0, 4);
             this.jNodesTree.Margin = new System.Windows.Forms.Padding(4);
             this.jNodesTree.Name = "jNodesTree";
-            treeNode17.Name = "Node4";
-            treeNode17.Text = "Node4";
-            treeNode18.Name = "Node1";
-            treeNode18.Text = "Node1";
-            treeNode19.Name = "Node5";
-            treeNode19.Text = "Node5";
-            treeNode20.Name = "Node6";
-            treeNode20.Text = "Node6";
-            treeNode21.Name = "Node2";
-            treeNode21.Text = "Node2";
-            treeNode22.Name = "Node7";
-            treeNode22.Text = "Node7";
-            treeNode23.Name = "Node3";
-            treeNode23.Text = "Node3";
-            treeNode24.Name = "Node0";
-            treeNode24.Text = "Node0";
-            this.jNodesTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode24});
             this.jNodesTree.Size = new System.Drawing.Size(619, 272);
             this.jNodesTree.TabIndex = 0;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.originalFileText);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
@@ -185,6 +155,18 @@
             this.OpenFileButton.ToolTipText = "Open file";
             this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
+            // originalFileText
+            // 
+            this.originalFileText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.originalFileText.Location = new System.Drawing.Point(3, 3);
+            this.originalFileText.Multiline = true;
+            this.originalFileText.Name = "originalFileText";
+            this.originalFileText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.originalFileText.Size = new System.Drawing.Size(617, 277);
+            this.originalFileText.TabIndex = 0;
+            // 
             // jViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -201,6 +183,8 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -220,6 +204,7 @@
         private System.Windows.Forms.TreeView jNodesTree;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton OpenFileButton;
+        private System.Windows.Forms.TextBox originalFileText;
     }
 }
 
