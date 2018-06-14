@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(jViewForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,9 +38,10 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.jNodesTree = new System.Windows.Forms.TreeView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.originalFileText = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
-            this.originalFileText = new System.Windows.Forms.TextBox();
+            this.treeImageList = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -115,9 +117,12 @@
             this.jNodesTree.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.jNodesTree.ImageIndex = 0;
+            this.jNodesTree.ImageList = this.treeImageList;
             this.jNodesTree.Location = new System.Drawing.Point(0, 4);
             this.jNodesTree.Margin = new System.Windows.Forms.Padding(4);
             this.jNodesTree.Name = "jNodesTree";
+            this.jNodesTree.SelectedImageIndex = 0;
             this.jNodesTree.Size = new System.Drawing.Size(619, 272);
             this.jNodesTree.TabIndex = 0;
             // 
@@ -132,6 +137,18 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Text";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // originalFileText
+            // 
+            this.originalFileText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.originalFileText.Location = new System.Drawing.Point(3, 3);
+            this.originalFileText.Multiline = true;
+            this.originalFileText.Name = "originalFileText";
+            this.originalFileText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.originalFileText.Size = new System.Drawing.Size(617, 277);
+            this.originalFileText.TabIndex = 0;
             // 
             // toolStrip1
             // 
@@ -155,17 +172,11 @@
             this.OpenFileButton.ToolTipText = "Open file";
             this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
-            // originalFileText
+            // treeImageList
             // 
-            this.originalFileText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.originalFileText.Location = new System.Drawing.Point(3, 3);
-            this.originalFileText.Multiline = true;
-            this.originalFileText.Name = "originalFileText";
-            this.originalFileText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.originalFileText.Size = new System.Drawing.Size(617, 277);
-            this.originalFileText.TabIndex = 0;
+            this.treeImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("treeImageList.ImageStream")));
+            this.treeImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.treeImageList.Images.SetKeyName(0, "object.png");
             // 
             // jViewForm
             // 
@@ -205,6 +216,7 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton OpenFileButton;
         private System.Windows.Forms.TextBox originalFileText;
+        private System.Windows.Forms.ImageList treeImageList;
     }
 }
 

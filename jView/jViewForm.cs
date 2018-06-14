@@ -47,7 +47,16 @@ namespace jView
                     //Load nodes into tree
                     TreeNode rootNode = null;
 
-                    LoadJsonIntoTree(o, ref rootNode);
+                    jNodesTree.BeginUpdate();
+                    jNodesTree.Nodes.Clear();
+
+                    TreeNode node = new TreeNode("JSON");
+                    node.ImageIndex = 0;
+                    jNodesTree.Nodes.Add(node);
+
+                    LoadJsonIntoTree(o, ref node);
+
+                    jNodesTree.EndUpdate();
                 }
             }
             catch(Exception e)
@@ -58,22 +67,39 @@ namespace jView
 
         private void LoadJsonIntoTree(JObject jsonObject, ref TreeNode parentNode)
         {
-            //
-            jNodesTree.BeginUpdate();
-
-            if (null == parentNode)
+            if (null != parentNode)
             {
-                jNodesTree.Nodes.Clear();
+                foreach(JProperty property in jsonObject.Properties())
+                {
+                    string nodeText;
 
-                TreeNode node = new TreeNode("JSON");
+                    TreeNode node = new TreeNode();
+                    JToken jToken = (JToken)property.Value;
+                    JTokenType propertyType = jToken.Type;
 
-                jNodesTree.Nodes.Add(node);
+                    if (JTokenType.Object != propertyType && JTokenType.Array != propertyType)
+                    {
+                        if (JTokenType.String != propertyType)
+                            nodeText = property.Name + ": " + property.Value.ToString();
+                        else
+                            nodeText = property.Name + ": \"" + property.Value.ToString() + "\"";
+                    }
+                    else
+                        nodeText = property.Name;
 
-                //jNodesTree.Nodes[0].Nodes.Add(new TreeNode("Item 1"));
-                //node.Nodes.Add(new TreeNode("Item 1"));
+                    node.Text = nodeText;
+                    parentNode.Nodes.Add(node);
+
+                    //JToken jToken = (JToken)property.Value;
+                    //JTokenType propertyType = jToken.Type;
+
+                    if (JTokenType.Object == propertyType) // add logic for arrays
+                    {
+                        // if this is an Object call this function again
+                        LoadJsonIntoTree((JObject)jToken, ref node);
+                    }
+                }
             }
-
-            jNodesTree.EndUpdate();
         }
 
         public jViewForm()
