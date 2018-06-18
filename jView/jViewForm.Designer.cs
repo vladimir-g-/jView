@@ -37,11 +37,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.jNodesTree = new System.Windows.Forms.TreeView();
+            this.treeImageList = new System.Windows.Forms.ImageList(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.originalFileText = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
-            this.treeImageList = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -126,6 +126,14 @@
             this.jNodesTree.Size = new System.Drawing.Size(619, 272);
             this.jNodesTree.TabIndex = 0;
             // 
+            // treeImageList
+            // 
+            this.treeImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("treeImageList.ImageStream")));
+            this.treeImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.treeImageList.Images.SetKeyName(0, "object.png");
+            this.treeImageList.Images.SetKeyName(1, "array.png");
+            this.treeImageList.Images.SetKeyName(2, "Dot.png");
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.originalFileText);
@@ -171,12 +179,6 @@
             this.OpenFileButton.Text = "toolStripButton1";
             this.OpenFileButton.ToolTipText = "Open file";
             this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
-            // 
-            // treeImageList
-            // 
-            this.treeImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("treeImageList.ImageStream")));
-            this.treeImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.treeImageList.Images.SetKeyName(0, "object.png");
             // 
             // jViewForm
             // 

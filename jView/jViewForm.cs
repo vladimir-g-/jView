@@ -54,7 +54,7 @@ namespace jView
                     node.ImageIndex = 0;
                     jNodesTree.Nodes.Add(node);
 
-                    LoadJsonIntoTree(o, ref node);
+                    LoadObjectIntoTree(o, ref node);
 
                     jNodesTree.EndUpdate();
                 }
@@ -65,7 +65,7 @@ namespace jView
             }
         }
 
-        private void LoadJsonIntoTree(JObject jsonObject, ref TreeNode parentNode)
+        private void LoadObjectIntoTree(JObject jsonObject, ref TreeNode parentNode)
         {
             if (null != parentNode)
             {
@@ -79,24 +79,32 @@ namespace jView
 
                     if (JTokenType.Object != propertyType && JTokenType.Array != propertyType)
                     {
+                        // This is not an object or an array
+                        node.ImageIndex = node.SelectedImageIndex = 2;
+
                         if (JTokenType.String != propertyType)
                             nodeText = property.Name + ": " + property.Value.ToString();
                         else
                             nodeText = property.Name + ": \"" + property.Value.ToString() + "\"";
                     }
                     else
+                    {
                         nodeText = property.Name;
+                    }
+
+                    if (JTokenType.Object == propertyType)
+                        node.ImageIndex = node.SelectedImageIndex = 0; // Set images for object node
+                    else
+                        if (JTokenType.Array == propertyType)
+                            node.ImageIndex = node.SelectedImageIndex = 1; // Set image for array  node
 
                     node.Text = nodeText;
                     parentNode.Nodes.Add(node);
 
-                    //JToken jToken = (JToken)property.Value;
-                    //JTokenType propertyType = jToken.Type;
-
-                    if (JTokenType.Object == propertyType) // add logic for arrays
+                    if (JTokenType.Object == propertyType) // TO DO: add logic for arrays
                     {
                         // if this is an Object call this function again
-                        LoadJsonIntoTree((JObject)jToken, ref node);
+                        LoadObjectIntoTree((JObject)jToken, ref node);
                     }
                 }
             }
