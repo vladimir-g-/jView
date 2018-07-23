@@ -14,6 +14,8 @@ using Newtonsoft.Json.Linq;
 
 namespace jView
 {
+    enum objectTypePicture { Object=0, Array, Others };
+
     public partial class jViewForm : Form
     {
         private string jsonFileName;
@@ -77,34 +79,118 @@ namespace jView
                     JToken jToken = (JToken)property.Value;
                     JTokenType propertyType = jToken.Type;
 
+                    // Create proper node text
                     if (JTokenType.Object != propertyType && JTokenType.Array != propertyType)
                     {
                         // This is not an object or an array
-                        node.ImageIndex = node.SelectedImageIndex = 2;
+                        node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Others;
 
                         if (JTokenType.String != propertyType)
-                            nodeText = property.Name + ": " + property.Value.ToString();
+                            nodeText = property.Name + " : " + property.Value.ToString();
                         else
-                            nodeText = property.Name + ": \"" + property.Value.ToString() + "\"";
+                            nodeText = property.Name + " : \"" + property.Value + "\"";
                     }
                     else
                     {
                         nodeText = property.Name;
                     }
 
+                    // Set proper node image
                     if (JTokenType.Object == propertyType)
-                        node.ImageIndex = node.SelectedImageIndex = 0; // Set images for object node
+                    {
+                        node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Object; // Set images for object node
+                    }
                     else
                         if (JTokenType.Array == propertyType)
-                            node.ImageIndex = node.SelectedImageIndex = 1; // Set image for array  node
+                            node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Array; // Set image for array  node
 
                     node.Text = nodeText;
                     parentNode.Nodes.Add(node);
 
-                    if (JTokenType.Object == propertyType) // TO DO: add logic for arrays
+                    if (JTokenType.Object == propertyType) 
                     {
-                        // if this is an Object call this function again
+                        // if this is an Object, call this function again
                         LoadObjectIntoTree((JObject)jToken, ref node);
+                    }
+                    else if (JTokenType.Array == propertyType)
+                    {
+                        // This is an array. Process it as array
+                        LoadArrayIntoTree((JArray)jToken, ref node);
+                    }
+                }
+            }
+        }
+
+        // Load array into tree view
+        private void LoadArrayIntoTree(JArray jsonArray, ref TreeNode parentNode)
+        {
+            if (jsonArray.Count > 0)
+            {
+                //int itemIndex = 0;
+                JTokenType itemType;
+                JToken jToken;
+                string nodeText;
+                TreeNode node;
+
+                // Array is not empty
+                //foreach (JToken jToken in jsonArray)
+                for (int itemIndex=0; itemIndex < jsonArray.Count; itemIndex++)
+                {
+                    // Process each token in the array
+                    jToken = jsonArray[itemIndex];
+
+                    // item type
+                    itemType = jToken.Type;
+                    
+                    // Create tree node
+                    node = new TreeNode();
+
+                    // Create proper node text
+                    if (JTokenType.Object != itemType && JTokenType.Array != itemType)
+                    {
+                        // This is not an object or an array
+                        node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Others;
+
+                        if (JTokenType.String != itemType)
+                            nodeText = itemIndex.ToString() + " : " + ((JProperty)jToken).Value.ToString();
+                        else
+                        {
+                            //JProperty prop = jToken.Value<JProperty>();
+                            //string tokenValue = jToken.Value<string>();
+                            nodeText = itemIndex.ToString() + " : \"" + jToken.Value<string>() + "\"";
+
+                            //nodeText = itemIndex.ToString() + ": \"" + ((JProperty)jToken).Value + "\"";
+                        }
+
+                        // Add a new node
+                        node.Text = nodeText;
+                        parentNode.Nodes.Add(node);
+                    }
+                    else
+                    {
+                        // This is an object or array
+                        nodeText = itemIndex.ToString();
+
+                        // Set proper image index
+                        if (JTokenType.Object == itemType)
+                            node.ImageIndex = (int)objectTypePicture.Object;
+                        else if (JTokenType.Array == itemType)
+                                node.ImageIndex = (int)objectTypePicture.Array;
+
+                        // Add a new node
+                        node.Text = nodeText;
+                        parentNode.Nodes.Add(node);
+
+                        if (JTokenType.Object == itemType)
+                        {
+                            // Load a new object
+                            LoadObjectIntoTree((JObject)jToken, ref node);
+                        }
+                        else if (JTokenType.Array == itemType)
+                        {
+                            // Load an array
+                            LoadArrayIntoTree((JArray)jToken, ref node);
+                        }
                     }
                 }
             }
