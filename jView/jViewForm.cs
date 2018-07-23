@@ -152,7 +152,8 @@ namespace jView
                         node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Others;
 
                         if (JTokenType.String != itemType)
-                            nodeText = itemIndex.ToString() + " : " + ((JProperty)jToken).Value.ToString();
+                            //nodeText = itemIndex.ToString() + " : " + ((JProperty)jToken).Value.ToString();
+                            nodeText = itemIndex.ToString() + " : " + jToken.Value<string>();
                         else
                         {
                             //JProperty prop = jToken.Value<JProperty>();
@@ -173,9 +174,9 @@ namespace jView
 
                         // Set proper image index
                         if (JTokenType.Object == itemType)
-                            node.ImageIndex = (int)objectTypePicture.Object;
+                            node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Object;
                         else if (JTokenType.Array == itemType)
-                                node.ImageIndex = (int)objectTypePicture.Array;
+                                node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Array;
 
                         // Add a new node
                         node.Text = nodeText;
