@@ -114,6 +114,7 @@
             // 
             // jNodesTree
             // 
+            this.jNodesTree.AllowDrop = true;
             this.jNodesTree.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -125,6 +126,8 @@
             this.jNodesTree.SelectedImageIndex = 0;
             this.jNodesTree.Size = new System.Drawing.Size(619, 272);
             this.jNodesTree.TabIndex = 0;
+            this.jNodesTree.DragDrop += new System.Windows.Forms.DragEventHandler(this.jNodesTree_DragDrop);
+            this.jNodesTree.DragEnter += new System.Windows.Forms.DragEventHandler(this.jNodesTree_DragEnter);
             // 
             // treeImageList
             // 
@@ -148,6 +151,7 @@
             // 
             // originalFileText
             // 
+            this.originalFileText.AllowDrop = true;
             this.originalFileText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));

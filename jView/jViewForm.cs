@@ -29,10 +29,30 @@ namespace jView
                 jsonFileName = dlg.FileName;
 
                 // Load json file into Tree and text window
-                LoadNodesFromFile(jsonFileName);
+                //LoadNodesFromFile(jsonFileName);
+                LoadFileByName(jsonFileName);
 
-                this.Text = jsonFileName;
+                //this.Text = jsonFileName;
             }
+        }
+        private bool LoadFileByName(string FileName)
+        {
+            //
+            bool RetValue = false;
+
+            try
+            {
+                LoadNodesFromFile(FileName);
+                RetValue = true;
+            }
+            catch(Exception e)
+            {
+                RetValue = false;
+            }
+            if (RetValue == true)
+                this.Text = FileName;
+
+            return RetValue;
         }
 
         private void LoadNodesFromFile(string FileName)
@@ -217,6 +237,32 @@ namespace jView
         {
             //
             GetFile();
+        }
+
+        private void jNodesTree_DragDrop(object sender, DragEventArgs e)
+        {
+            //
+            string fileName;
+
+            Array data = ((IDataObject)e.Data).GetData("FileNameW") as Array;
+            if (data != null)
+            {
+                if ((data.Length == 1) && (data.GetValue(0) is String))
+                {
+                    fileName = ((string[])data)[0];
+                    LoadFileByName(fileName);
+                }
+            }
+        }
+
+        private void jNodesTree_DragEnter(object sender, DragEventArgs e)
+        {
+            //
+            Array data = ((IDataObject)e.Data).GetData("FileNameW") as Array;
+            if (data != null)
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
         }
     }
 }
