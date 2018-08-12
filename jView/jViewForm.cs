@@ -40,23 +40,18 @@ namespace jView
             //
             bool RetValue = false;
 
-            try
-            {
-                LoadNodesFromFile(FileName);
-                RetValue = true;
-            }
-            catch(Exception e)
-            {
-                RetValue = false;
-            }
+            RetValue = LoadNodesFromFile(FileName);
+
             if (RetValue == true)
                 this.Text = FileName;
 
             return RetValue;
         }
 
-        private void LoadNodesFromFile(string FileName)
+        private bool LoadNodesFromFile(string FileName)
         {
+            bool retValue = false;
+
             // try to read the file and load it into json object
             try
             {
@@ -79,12 +74,15 @@ namespace jView
                     LoadObjectIntoTree(o, ref node);
 
                     jNodesTree.EndUpdate();
+
+                    retValue = true;
                 }
             }
             catch(Exception e)
             {
                 MessageBox.Show(e.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            return retValue;
         }
 
         private void LoadObjectIntoTree(JObject jsonObject, ref TreeNode parentNode)
