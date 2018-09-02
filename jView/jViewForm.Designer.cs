@@ -161,6 +161,8 @@
             this.originalFileText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.originalFileText.Size = new System.Drawing.Size(617, 277);
             this.originalFileText.TabIndex = 0;
+            this.originalFileText.DragDrop += new System.Windows.Forms.DragEventHandler(this.originalFileText_DragDrop);
+            this.originalFileText.DragEnter += new System.Windows.Forms.DragEventHandler(this.originalFileText_DragEnter);
             // 
             // toolStrip1
             // 

@@ -59,6 +59,8 @@ namespace jView
                 using (JsonTextReader reader = new JsonTextReader(file))
                 {
                     JObject o = JObject.Load(reader);
+
+                    // Load file in text control
                     originalFileText.Text = o.ToString();
 
                     //Load nodes into tree
@@ -236,8 +238,7 @@ namespace jView
             //
             GetFile();
         }
-
-        private void jNodesTree_DragDrop(object sender, DragEventArgs e)
+        private void LoadDroppedFile(DragEventArgs e)
         {
             //
             string fileName;
@@ -253,14 +254,55 @@ namespace jView
             }
         }
 
-        private void jNodesTree_DragEnter(object sender, DragEventArgs e)
+        private bool CheckDragArguments(ref DragEventArgs e)
         {
-            //
+            bool returnValue = true;
+
+            // Get going to be dropped file name
             Array data = ((IDataObject)e.Data).GetData("FileNameW") as Array;
             if (data != null)
             {
-                e.Effect = DragDropEffects.Copy;
+                // try to read the file and load it into json object
+                string fileName = ((string[])data)[0];
+
+                try
+                {
+                    using (StreamReader file = File.OpenText(fileName))
+                    using (JsonTextReader reader = new JsonTextReader(file))
+                    {
+                        JObject o = JObject.Load(reader);
+                    }
+                    e.Effect = DragDropEffects.Copy;
+                }
+                catch (Exception exc)
+                {
+                    returnValue = false;
+                }
             }
+
+            return returnValue;
+        }
+
+        private void jNodesTree_DragDrop(object sender, DragEventArgs e)
+        {
+            //
+            LoadDroppedFile(e);
+        }
+
+        private void jNodesTree_DragEnter(object sender, DragEventArgs e)
+        {
+            CheckDragArguments(ref e);
+        }
+
+        private void originalFileText_DragDrop(object sender, DragEventArgs e)
+        {
+            //
+            LoadDroppedFile(e);
+        }
+
+        private void originalFileText_DragEnter(object sender, DragEventArgs e)
+        {
+            CheckDragArguments(ref e);
         }
     }
 }
