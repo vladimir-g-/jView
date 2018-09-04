@@ -258,6 +258,8 @@ namespace jView
         {
             bool returnValue = true;
 
+            e.Effect = DragDropEffects.None;
+
             // Get going to be dropped file name
             Array data = ((IDataObject)e.Data).GetData("FileNameW") as Array;
             if (data != null)
