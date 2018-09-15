@@ -34,6 +34,8 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SearchNodeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.jNodesTree = new System.Windows.Forms.TreeView();
@@ -53,7 +55,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.searchToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -85,6 +88,22 @@
             this.ExitMenuItem.Text = "Exit";
             this.ExitMenuItem.ToolTipText = "Close program";
             this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SearchNodeMenuItem});
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
+            this.searchToolStripMenuItem.Text = "Search";
+            // 
+            // SearchNodeMenuItem
+            // 
+            this.SearchNodeMenuItem.Name = "SearchNodeMenuItem";
+            this.SearchNodeMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.SearchNodeMenuItem.Text = "Search Node";
+            this.SearchNodeMenuItem.ToolTipText = "Search Node in the Tree";
+            this.SearchNodeMenuItem.Click += new System.EventHandler(this.SearchNodeMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -226,6 +245,8 @@
         private System.Windows.Forms.ToolStripButton OpenFileButton;
         private System.Windows.Forms.TextBox originalFileText;
         private System.Windows.Forms.ImageList treeImageList;
+        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SearchNodeMenuItem;
     }
 }
 

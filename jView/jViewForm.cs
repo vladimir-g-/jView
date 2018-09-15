@@ -64,7 +64,7 @@ namespace jView
                     originalFileText.Text = o.ToString();
 
                     //Load nodes into tree
-                    TreeNode rootNode = null;
+                    //TreeNode rootNode = null;
 
                     jNodesTree.BeginUpdate();
                     jNodesTree.Nodes.Clear();
@@ -305,6 +305,14 @@ namespace jView
         private void originalFileText_DragEnter(object sender, DragEventArgs e)
         {
             CheckDragArguments(ref e);
+        }
+
+        private void SearchNodeMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+            SearchForm dlg = new SearchForm();
+
+            dlg.Show();
         }
     }
 }
