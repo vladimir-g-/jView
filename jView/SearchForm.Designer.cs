@@ -28,88 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
             this.searchText = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.SearchTextWndLabel = new System.Windows.Forms.Label();
             this.findButton = new System.Windows.Forms.Button();
             this.CloseSearchDialogButton = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.searchText);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(479, 138);
-            this.panel1.TabIndex = 0;
             // 
             // searchText
             // 
-            this.searchText.Location = new System.Drawing.Point(57, 17);
+            this.searchText.Location = new System.Drawing.Point(69, 24);
+            this.searchText.Margin = new System.Windows.Forms.Padding(2);
             this.searchText.Name = "searchText";
-            this.searchText.Size = new System.Drawing.Size(391, 22);
-            this.searchText.TabIndex = 1;
+            this.searchText.Size = new System.Drawing.Size(172, 20);
+            this.searchText.TabIndex = 0;
             // 
-            // label1
+            // SearchTextWndLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Text";
+            this.SearchTextWndLabel.AutoSize = true;
+            this.SearchTextWndLabel.Location = new System.Drawing.Point(10, 27);
+            this.SearchTextWndLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.SearchTextWndLabel.Name = "SearchTextWndLabel";
+            this.SearchTextWndLabel.Size = new System.Drawing.Size(55, 13);
+            this.SearchTextWndLabel.TabIndex = 0;
+            this.SearchTextWndLabel.Text = "Tag name";
             // 
             // findButton
             // 
-            this.findButton.Location = new System.Drawing.Point(507, 12);
+            this.findButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.findButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.findButton.Location = new System.Drawing.Point(279, 11);
+            this.findButton.Margin = new System.Windows.Forms.Padding(2);
             this.findButton.Name = "findButton";
-            this.findButton.Size = new System.Drawing.Size(95, 34);
+            this.findButton.Size = new System.Drawing.Size(71, 28);
             this.findButton.TabIndex = 1;
             this.findButton.Text = "Find";
             this.findButton.UseVisualStyleBackColor = true;
+            this.findButton.Click += new System.EventHandler(this.findButton_Click);
             // 
             // CloseSearchDialogButton
             // 
+            this.CloseSearchDialogButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CloseSearchDialogButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CloseSearchDialogButton.Location = new System.Drawing.Point(507, 52);
+            this.CloseSearchDialogButton.Location = new System.Drawing.Point(279, 43);
+            this.CloseSearchDialogButton.Margin = new System.Windows.Forms.Padding(2);
             this.CloseSearchDialogButton.Name = "CloseSearchDialogButton";
-            this.CloseSearchDialogButton.Size = new System.Drawing.Size(95, 36);
+            this.CloseSearchDialogButton.Size = new System.Drawing.Size(71, 29);
             this.CloseSearchDialogButton.TabIndex = 2;
             this.CloseSearchDialogButton.Text = "Cancel";
             this.CloseSearchDialogButton.UseVisualStyleBackColor = true;
             this.CloseSearchDialogButton.Click += new System.EventHandler(this.CloseSearchDialogButton_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.searchText);
+            this.groupBox1.Controls.Add(this.SearchTextWndLabel);
+            this.groupBox1.Location = new System.Drawing.Point(12, 11);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(254, 61);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Find";
+            // 
             // SearchForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CloseSearchDialogButton;
-            this.ClientSize = new System.Drawing.Size(627, 162);
+            this.ClientSize = new System.Drawing.Size(359, 87);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.CloseSearchDialogButton);
             this.Controls.Add(this.findButton);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SearchForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "Search";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Text = "Search Tag";
+            this.TopMost = true;
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button findButton;
         private System.Windows.Forms.TextBox searchText;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label SearchTextWndLabel;
         private System.Windows.Forms.Button CloseSearchDialogButton;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
