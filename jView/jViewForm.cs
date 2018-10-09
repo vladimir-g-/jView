@@ -326,7 +326,7 @@ namespace jView
         }
 
         /// <summary>
-        ///  Find node having specified text in the Name property
+        ///  Find node matching with specified text in the Name property
         /// </summary>
         /// <param name="searchText">text we are looking for</param>
         /// <returns>true - if node containig specified text was found. false - if there are no nodes containig specified text.</returns>
