@@ -13,6 +13,7 @@ namespace jView
     public partial class SearchForm : Form
     {
         private FindByTextFunction searchByText; // delegate for calling search functionality
+        private ClearSearchResults clearSearchResults; // delegeate for calling functionality of clearing search results in object whick called this window
 
         // Commented to exclude possibility to create this class in wrong way
         /*public SearchForm()
@@ -20,11 +21,12 @@ namespace jView
             InitializeComponent();
         }*/
 
-        public SearchForm(FindByTextFunction func)
+        public SearchForm(FindByTextFunction func, ClearSearchResults funcClear)
         {
             InitializeComponent();
 
             searchByText = func;
+            clearSearchResults = funcClear;
         }
 
         private void CloseSearchDialogButton_Click(object sender, EventArgs e)
@@ -34,14 +36,23 @@ namespace jView
 
         private void findButton_Click(object sender, EventArgs e)
         {
-            bool searchResult = false;
+            int searchResult = 0;
 
             // Find button was clicked ...
             if (searchByText != null)
                 searchResult = searchByText(searchText.Text);
 
-            if (searchResult == false)
+            if (searchResult == 0)
                 MessageBox.Show("Tag '" + searchText.Text + "' was not found.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            else
+            {
+                numberOfFoundNodesLabel.Text = searchResult.ToString() + " nodes";
+            }
+        }
+
+        private void SearchForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            clearSearchResults();
         }
     }
 }
