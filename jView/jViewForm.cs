@@ -22,7 +22,8 @@ namespace jView
     public partial class jViewForm : Form
     {
         private string jsonFileName;
-        private static TreeNode[] searchResultNodes = new TreeNode[0]; // List of tree nodes were found
+        //private static TreeNode[] searchResultNodes = new TreeNode[0]; // List of tree nodes were found
+        private static List<TreeNode> searchResultNodes = new List<TreeNode>();
         private static int selectedNode = -1; // index of tree node which were selected durong searching. -1 means no search was done before
         private static int nodesFound = -1; // Number of nodes were found during search. -1 means no search was done before
 
@@ -341,8 +342,10 @@ namespace jView
                 if (selectedNode == -1)
                 {
                     // searching node having received text
-                    searchResultNodes = jNodesTree.Nodes.Find(searchText, true);
-                    nodesFound = searchResultNodes.Length;
+                    //searchResultNodes = jNodesTree.Nodes.Find(searchText, true);
+                    FindNode(jNodesTree.Nodes[0].Nodes, searchText);
+                    //nodesFound = searchResultNodes.Length;
+                    nodesFound = searchResultNodes.Count;
 
                     if (nodesFound > 0)
                     {
@@ -375,8 +378,35 @@ namespace jView
 
             selectedNode = -1;
             nodesFound = -1;
+            searchResultNodes.Clear();
 
             return;
+        }
+
+        private void FindNode(TreeNodeCollection nodes, string searchText)
+        {
+            // Find required node in collection
+            foreach(TreeNode node in nodes)
+            {
+                // check if node match a condition
+                CheckNodeName(node, searchText);
+            }
+        }
+
+        private void CheckNodeName(TreeNode node, string searchText)
+        {
+            //
+            if (node.Name.Contains(searchText))
+            {
+                // we found a node having specified text string
+                searchResultNodes.Add(node);
+            }
+
+            // check all child nodes
+            foreach (TreeNode childNode in node.Nodes)
+            {
+                CheckNodeName(childNode, searchText);
+            }
         }
     }
 }

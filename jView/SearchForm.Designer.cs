@@ -47,6 +47,7 @@
             this.searchText.Name = "searchText";
             this.searchText.Size = new System.Drawing.Size(172, 20);
             this.searchText.TabIndex = 0;
+            this.searchText.TextChanged += new System.EventHandler(this.searchText_TextChanged);
             // 
             // SearchTextWndLabel
             // 
@@ -120,9 +121,8 @@
             this.numberOfFoundNodesLabel.AutoSize = true;
             this.numberOfFoundNodesLabel.Location = new System.Drawing.Point(56, 28);
             this.numberOfFoundNodesLabel.Name = "numberOfFoundNodesLabel";
-            this.numberOfFoundNodesLabel.Size = new System.Drawing.Size(47, 13);
+            this.numberOfFoundNodesLabel.Size = new System.Drawing.Size(0, 13);
             this.numberOfFoundNodesLabel.TabIndex = 5;
-            this.numberOfFoundNodesLabel.Text = "N nodes";
             // 
             // SearchForm
             // 

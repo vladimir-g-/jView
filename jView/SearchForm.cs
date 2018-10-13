@@ -40,19 +40,32 @@ namespace jView
 
             // Find button was clicked ...
             if (searchByText != null)
+            {
                 searchResult = searchByText(searchText.Text);
 
-            if (searchResult == 0)
-                MessageBox.Show("Tag '" + searchText.Text + "' was not found.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            else
-            {
                 numberOfFoundNodesLabel.Text = searchResult.ToString() + " nodes";
+
+                if (searchResult == 0)
+                    MessageBox.Show("Tag '" + searchText.Text + "' was not found.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                {
+                    if (searchResult > 1)
+                    {
+                        findButton.Text = "Find next";
+                    }
+                }
             }
         }
 
         private void SearchForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             clearSearchResults();
+        }
+
+        private void searchText_TextChanged(object sender, EventArgs e)
+        {
+            clearSearchResults();
+            findButton.Text = "Find";
         }
     }
 }
