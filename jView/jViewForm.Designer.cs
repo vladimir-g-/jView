@@ -59,8 +59,7 @@
             this.searchToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(631, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(505, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,13 +69,13 @@
             this.OpenMenuItem,
             this.ExitMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // OpenMenuItem
             // 
             this.OpenMenuItem.Name = "OpenMenuItem";
-            this.OpenMenuItem.Size = new System.Drawing.Size(120, 26);
+            this.OpenMenuItem.Size = new System.Drawing.Size(103, 22);
             this.OpenMenuItem.Text = "Open";
             this.OpenMenuItem.ToolTipText = "Open file";
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
@@ -84,7 +83,7 @@
             // ExitMenuItem
             // 
             this.ExitMenuItem.Name = "ExitMenuItem";
-            this.ExitMenuItem.Size = new System.Drawing.Size(120, 26);
+            this.ExitMenuItem.Size = new System.Drawing.Size(103, 22);
             this.ExitMenuItem.Text = "Exit";
             this.ExitMenuItem.ToolTipText = "Close program";
             this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
@@ -94,13 +93,13 @@
             this.searchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SearchNodeMenuItem});
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.searchToolStripMenuItem.Text = "Search";
             // 
             // SearchNodeMenuItem
             // 
             this.SearchNodeMenuItem.Name = "SearchNodeMenuItem";
-            this.SearchNodeMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.SearchNodeMenuItem.Size = new System.Drawing.Size(141, 22);
             this.SearchNodeMenuItem.Text = "Search Node";
             this.SearchNodeMenuItem.ToolTipText = "Search Node in the Tree";
             this.SearchNodeMenuItem.Click += new System.EventHandler(this.SearchNodeMenuItem_Click);
@@ -112,21 +111,19 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(0, 64);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControl1.Location = new System.Drawing.Point(0, 51);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(631, 309);
+            this.tabControl1.Size = new System.Drawing.Size(505, 247);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.jNodesTree);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(623, 280);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Size = new System.Drawing.Size(497, 221);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tree";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -139,11 +136,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.jNodesTree.ImageIndex = 0;
             this.jNodesTree.ImageList = this.treeImageList;
-            this.jNodesTree.Location = new System.Drawing.Point(0, 4);
-            this.jNodesTree.Margin = new System.Windows.Forms.Padding(4);
+            this.jNodesTree.Location = new System.Drawing.Point(0, 3);
             this.jNodesTree.Name = "jNodesTree";
             this.jNodesTree.SelectedImageIndex = 0;
-            this.jNodesTree.Size = new System.Drawing.Size(619, 272);
+            this.jNodesTree.Size = new System.Drawing.Size(496, 218);
             this.jNodesTree.TabIndex = 0;
             this.jNodesTree.DragDrop += new System.Windows.Forms.DragEventHandler(this.jNodesTree_DragDrop);
             this.jNodesTree.DragEnter += new System.Windows.Forms.DragEventHandler(this.jNodesTree_DragEnter);
@@ -159,11 +155,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.originalFileText);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(623, 280);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(497, 221);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Text";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -174,11 +169,12 @@
             this.originalFileText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.originalFileText.Location = new System.Drawing.Point(3, 3);
+            this.originalFileText.Location = new System.Drawing.Point(0, 3);
+            this.originalFileText.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.originalFileText.Multiline = true;
             this.originalFileText.Name = "originalFileText";
             this.originalFileText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.originalFileText.Size = new System.Drawing.Size(617, 277);
+            this.originalFileText.Size = new System.Drawing.Size(496, 218);
             this.originalFileText.TabIndex = 0;
             this.originalFileText.DragDrop += new System.Windows.Forms.DragEventHandler(this.originalFileText_DragDrop);
             this.originalFileText.DragEnter += new System.Windows.Forms.DragEventHandler(this.originalFileText_DragEnter);
@@ -188,9 +184,9 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenFileButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(631, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(505, 27);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -207,15 +203,14 @@
             // 
             // jViewForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(631, 373);
+            this.ClientSize = new System.Drawing.Size(505, 298);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "jViewForm";
             this.Text = "jView";
             this.menuStrip1.ResumeLayout(false);

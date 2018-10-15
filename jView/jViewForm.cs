@@ -339,7 +339,7 @@ namespace jView
             if (searchText.Length > 0)
             {
                 // Check whether we did search before
-                if (selectedNode == -1)
+                if (selectedNode == -1 && jNodesTree.Nodes.Count > 0)
                 {
                     // searching node having received text
                     //searchResultNodes = jNodesTree.Nodes.Find(searchText, true);

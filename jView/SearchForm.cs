@@ -15,12 +15,6 @@ namespace jView
         private FindByTextFunction searchByText; // delegate for calling search functionality
         private ClearSearchResults clearSearchResults; // delegeate for calling functionality of clearing search results in object whick called this window
 
-        // Commented to exclude possibility to create this class in wrong way
-        /*public SearchForm()
-        {
-            InitializeComponent();
-        }*/
-
         public SearchForm(FindByTextFunction func, ClearSearchResults funcClear)
         {
             InitializeComponent();
@@ -36,22 +30,26 @@ namespace jView
 
         private void findButton_Click(object sender, EventArgs e)
         {
-            int searchResult = 0;
+            int nodesFound = 0;
 
             // Find button was clicked ...
             if (searchByText != null)
             {
-                searchResult = searchByText(searchText.Text);
+                nodesFound = searchByText(searchText.Text);
 
-                numberOfFoundNodesLabel.Text = searchResult.ToString() + " nodes";
-
-                if (searchResult == 0)
-                    MessageBox.Show("Tag '" + searchText.Text + "' was not found.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                else
+                // Check if we received 0 or more. Receiving -1 means that tree doesn't contain any suitable node
+                if (nodesFound != -1)
                 {
-                    if (searchResult > 1)
+                    numberOfFoundNodesLabel.Text = nodesFound.ToString() + " nodes";
+
+                    if (nodesFound == 0)
+                        MessageBox.Show("Tag '" + searchText.Text + "' was not found.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    else
                     {
-                        findButton.Text = "Find next";
+                        if (nodesFound > 1)
+                        {
+                            findButton.Text = "Find next";
+                        }
                     }
                 }
             }
