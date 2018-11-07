@@ -14,11 +14,18 @@ using Newtonsoft.Json.Linq;
 
 namespace jView
 {
-    enum objectTypePicture { Object=0, Array, Others };
+    enum objectTypePicture { Object=0, Array, Others }; // enum for image indexes fro different types of json elements
+
+    public delegate int FindByTextFunction(string searchString); // Delegate definition for searching node having specified text
+    public delegate void ClearSearchResults();  // Delegate for clearing prevoius search results
 
     public partial class jViewForm : Form
     {
         private string jsonFileName;
+        //private static TreeNode[] searchResultNodes = new TreeNode[0]; // List of tree nodes were found
+        private static List<TreeNode> searchResultNodes = new List<TreeNode>();
+        private static int selectedNode = -1; // index of tree node which were selected durong searching. -1 means no search was done before
+        private static int nodesFound = -1; // Number of nodes were found during search. -1 means no search was done before
 
         private void GetFile()
         {
@@ -64,7 +71,7 @@ namespace jView
                     originalFileText.Text = o.ToString();
 
                     //Load nodes into tree
-                    TreeNode rootNode = null;
+                    //TreeNode rootNode = null;
 
                     jNodesTree.BeginUpdate();
                     jNodesTree.Nodes.Clear();
@@ -125,6 +132,8 @@ namespace jView
                             node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Array; // Set image for array  node
 
                     node.Text = nodeText;
+                    node.Name = property.Name; // set node name as tag name for searching purpose
+
                     parentNode.Nodes.Add(node);
 
                     if (JTokenType.Object == propertyType) 
@@ -185,6 +194,8 @@ namespace jView
 
                         // Add a new node
                         node.Text = nodeText;
+                        //node.Name = ; // set node name as tag name for searching purpose
+
                         parentNode.Nodes.Add(node);
                     }
                     else
@@ -276,7 +287,7 @@ namespace jView
                     }
                     e.Effect = DragDropEffects.Copy;
                 }
-                catch (Exception exc)
+                catch (Exception ex)
                 {
                     returnValue = false;
                 }
@@ -305,6 +316,97 @@ namespace jView
         private void originalFileText_DragEnter(object sender, DragEventArgs e)
         {
             CheckDragArguments(ref e);
+        }
+
+        /// <summary>
+        /// Search node functionality. Menu item handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SearchNodeMenuItem_Click(object sender, EventArgs e)
+        {
+            SearchForm dlg = new SearchForm(FindNodeByText, ClearSearchResult);
+            dlg.Show();
+        }
+
+        /// <summary>
+        ///  Find node matching with specified text in the Name property
+        /// </summary>
+        /// <param name="searchText">text we are looking for</param>
+        /// <returns>Number of nodes containig specified text were found.</returns>
+        private int FindNodeByText(string searchText)
+        {
+            if (searchText.Length > 0)
+            {
+                // Check whether we did search before
+                if (selectedNode == -1 && jNodesTree.Nodes.Count > 0)
+                {
+                    // searching node having received text
+                    //searchResultNodes = jNodesTree.Nodes.Find(searchText, true);
+                    FindNode(jNodesTree.Nodes[0].Nodes, searchText);
+                    //nodesFound = searchResultNodes.Length;
+                    nodesFound = searchResultNodes.Count;
+
+                    if (nodesFound > 0)
+                    {
+                        // Take first found node and set focus on it
+                        selectedNode = 0;
+                        jNodesTree.SelectedNode = searchResultNodes[selectedNode];
+                        jNodesTree.Focus();
+                    }
+                }
+                else
+                {
+                    // we did search before. Set focus on the next found element
+                    if (selectedNode < (nodesFound-1))
+                    {
+                        //
+                        //++selectedNode;
+                        jNodesTree.SelectedNode = searchResultNodes[++selectedNode];
+                        jNodesTree.Focus();
+                    }
+                }
+            }
+
+            return nodesFound;
+        }
+
+        private void ClearSearchResult()
+        {
+            //if (searchResultNodes.Length > 0)
+            //    Array.Clear(searchResultNodes, 0, nodesFound);
+
+            selectedNode = -1;
+            nodesFound = -1;
+            searchResultNodes.Clear();
+
+            return;
+        }
+
+        private void FindNode(TreeNodeCollection nodes, string searchText)
+        {
+            // Find required node in collection
+            foreach(TreeNode node in nodes)
+            {
+                // check if node match a condition
+                CheckNodeName(node, searchText);
+            }
+        }
+
+        private void CheckNodeName(TreeNode node, string searchText)
+        {
+            //
+            if (node.Name.Contains(searchText))
+            {
+                // we found a node having specified text string
+                searchResultNodes.Add(node);
+            }
+
+            // check all child nodes
+            foreach (TreeNode childNode in node.Nodes)
+            {
+                CheckNodeName(childNode, searchText);
+            }
         }
     }
 }
