@@ -110,15 +110,14 @@ namespace jView
                     if (JTokenType.Object != propertyType && JTokenType.Array != propertyType)
                     {
                         // This is not an object or an array
-
-                        if (propertyType == JTokenType.String)
+                        switch(propertyType)
                         {
+                            case JTokenType.String:
                                 node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Text;
-                        }
-                        else
-                        {
-                            // This is not an object or an array or string
-                            node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Others;
+                                break;
+                            default:
+                                node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Others;
+                                break;
                         }
 
                         if (JTokenType.String != propertyType)
