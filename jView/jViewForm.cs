@@ -94,6 +94,35 @@ namespace jView
             return retValue;
         }
 
+        /// <summary>
+        /// Return node image index by json token type
+        /// </summary>
+        /// <param name="tokenType">Token type</param>
+        /// <returns>Image index</returns>
+        private int GetImageIndex(JTokenType tokenType)
+        {
+            int ResultValue = (int)objectTypePicture.Others;
+
+            switch (tokenType)
+            {
+                case JTokenType.String:
+                    ResultValue = (int)objectTypePicture.Text;
+                    break;
+                case JTokenType.Boolean:
+                    ResultValue = (int)objectTypePicture.Boolean;
+                    break;
+                case JTokenType.Integer:
+                case JTokenType.Float:
+                    ResultValue = (int)objectTypePicture.Number;
+                    break;
+                /*default:
+                    ResultValue = (int)objectTypePicture.Others;
+                    break;*/
+            }
+
+            return ResultValue;
+        }
+
         private void LoadObjectIntoTree(JObject jsonObject, ref TreeNode parentNode)
         {
             if (null != parentNode)
@@ -110,22 +139,7 @@ namespace jView
                     if (JTokenType.Object != propertyType && JTokenType.Array != propertyType)
                     {
                         // This is not an object or an array
-                        switch(propertyType)
-                        {
-                            case JTokenType.String:
-                                node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Text;
-                                break;
-                            case JTokenType.Boolean:
-                                node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Boolean;
-                                break;
-                            case JTokenType.Integer:
-                            case JTokenType.Float:
-                                node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Number;
-                                break;
-                            default:
-                                node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Others;
-                                break;
-                        }
+                        node.ImageIndex = node.SelectedImageIndex = GetImageIndex(propertyType);
 
                         if (JTokenType.String != propertyType)
                             nodeText = property.Name + " : " + property.Value.ToString();
@@ -193,7 +207,7 @@ namespace jView
                     if (JTokenType.Object != itemType && JTokenType.Array != itemType)
                     {
                         // This is not an object or an array
-                        node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Others;
+                        node.ImageIndex = node.SelectedImageIndex = GetImageIndex(itemType);
 
                         if (JTokenType.String != itemType)
                             //nodeText = itemIndex.ToString() + " : " + ((JProperty)jToken).Value.ToString();
@@ -334,7 +348,7 @@ namespace jView
         }
 
         /// <summary>
-        /// Search node functionality. Menu item handler
+        /// Show search node dialog window. Menu item handler
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
