@@ -115,9 +115,6 @@ namespace jView
                 case JTokenType.Float:
                     ResultValue = (int)objectTypePicture.Number;
                     break;
-                /*default:
-                    ResultValue = (int)objectTypePicture.Others;
-                    break;*/
             }
 
             return ResultValue;
