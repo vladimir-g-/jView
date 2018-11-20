@@ -155,7 +155,9 @@
             this.treeImageList.Images.SetKeyName(0, "object.png");
             this.treeImageList.Images.SetKeyName(1, "array.png");
             this.treeImageList.Images.SetKeyName(2, "Dot.png");
-            this.treeImageList.Images.SetKeyName(3, "Text_2.png");
+            this.treeImageList.Images.SetKeyName(3, "Text_3.png");
+            this.treeImageList.Images.SetKeyName(4, "Boolean.png");
+            this.treeImageList.Images.SetKeyName(5, "Number.png");
             // 
             // tabPage2
             // 

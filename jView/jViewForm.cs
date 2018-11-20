@@ -14,7 +14,7 @@ using Newtonsoft.Json.Linq;
 
 namespace jView
 {
-    enum objectTypePicture { Object=0, Array, Others, Text }; // enum for image indexes fro different types of json elements
+    enum objectTypePicture { Object=0, Array, Others, Text, Boolean, Number }; // enum for image indexes fro different types of json elements
 
     public delegate int FindByTextFunction(string searchString); // Delegate definition for searching node having specified text
     public delegate void ClearSearchResults();  // Delegate for clearing prevoius search results
@@ -114,6 +114,13 @@ namespace jView
                         {
                             case JTokenType.String:
                                 node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Text;
+                                break;
+                            case JTokenType.Boolean:
+                                node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Boolean;
+                                break;
+                            case JTokenType.Integer:
+                            case JTokenType.Float:
+                                node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Number;
                                 break;
                             default:
                                 node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Others;
