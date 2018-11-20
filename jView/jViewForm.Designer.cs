@@ -113,7 +113,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(0, 64);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(631, 309);
@@ -123,9 +123,9 @@
             // 
             this.tabPage1.Controls.Add(this.jNodesTree);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(623, 280);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tree";
@@ -140,7 +140,7 @@
             this.jNodesTree.ImageIndex = 0;
             this.jNodesTree.ImageList = this.treeImageList;
             this.jNodesTree.Location = new System.Drawing.Point(0, 4);
-            this.jNodesTree.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.jNodesTree.Margin = new System.Windows.Forms.Padding(4);
             this.jNodesTree.Name = "jNodesTree";
             this.jNodesTree.SelectedImageIndex = 0;
             this.jNodesTree.Size = new System.Drawing.Size(619, 272);
@@ -155,15 +155,15 @@
             this.treeImageList.Images.SetKeyName(0, "object.png");
             this.treeImageList.Images.SetKeyName(1, "array.png");
             this.treeImageList.Images.SetKeyName(2, "Dot.png");
-            this.treeImageList.Images.SetKeyName(3, "Text.png");
+            this.treeImageList.Images.SetKeyName(3, "Text_2.png");
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.originalFileText);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(623, 280);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Text";
@@ -217,7 +217,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "jViewForm";
             this.Text = "jView";
             this.menuStrip1.ResumeLayout(false);
