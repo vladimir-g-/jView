@@ -24,7 +24,7 @@ namespace jView
         private string jsonFileName;
         //private static TreeNode[] searchResultNodes = new TreeNode[0]; // List of tree nodes were found
         private static List<TreeNode> searchResultNodes = new List<TreeNode>();
-        private static int selectedNode = -1; // index of tree node which were selected durong searching. -1 means no search was done before
+        private static int selectedNode = -1; // index of tree node which were selected during searching. -1 means no search was done before
         private static int nodesFound = -1; // Number of nodes were found during search. -1 means no search was done before
 
         private void GetFile()
