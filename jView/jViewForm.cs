@@ -16,7 +16,7 @@ namespace jView
 {
     enum objectTypePicture { Object=0, Array, Others, Text, Boolean, Number }; // enum for image indexes fro different types of json elements
 
-    public delegate int FindByTextFunction(string searchString); // Delegate definition for searching node having specified text
+    public delegate int FindByTextFunction(string searchString, SearchOptions options); // Delegate definition for searching node having specified text
     public delegate void ClearSearchResults();  // Delegate for clearing prevoius search results
 
     public partial class jViewForm : Form
@@ -359,8 +359,9 @@ namespace jView
         ///  Find node matching with specified text in the Name property
         /// </summary>
         /// <param name="searchText">text we are looking for</param>
+        /// <param name="options">search options defines where need to search text - in tag names or tag values</param>
         /// <returns>Number of nodes containig specified text were found.</returns>
-        private int FindNodeByText(string searchText)
+        private int FindNodeByText(string searchText, SearchOptions options)
         {
             if (searchText.Length > 0)
             {
@@ -386,11 +387,12 @@ namespace jView
                     // we did search before. Set focus on the next found element
                     if (selectedNode < (nodesFound-1))
                     {
-                        //
-                        //++selectedNode;
-                        jNodesTree.SelectedNode = searchResultNodes[++selectedNode];
-                        jNodesTree.Focus();
+                        // We didn't reach the last node, so we increment found nodes counter
+                        ++selectedNode;
                     }
+                    // set focus on current or last found node
+                    jNodesTree.SelectedNode = searchResultNodes[selectedNode];
+                    jNodesTree.Focus();
                 }
             }
 

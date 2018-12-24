@@ -83,6 +83,7 @@
     <Compile Include="SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchOptions.cs" />
     <EmbeddedResource Include="jViewForm.resx">
       <DependentUpon>jViewForm.cs</DependentUpon>
     </EmbeddedResource>

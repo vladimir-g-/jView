@@ -35,12 +35,16 @@ namespace jView
             // Find button was clicked ...
             if (searchByText != null)
             {
-                nodesFound = searchByText(searchText.Text);
+                SearchOptions options = new SearchOptions();
+                options.FindName = checkSearchInNames.Checked;
+                options.FindValue = checkSearchInValues.Checked;
+
+                nodesFound = searchByText(searchText.Text, options);
 
                 // Check if we received 0 or more. Receiving -1 means that tree doesn't contain any suitable node
                 if (nodesFound != -1)
                 {
-                    numberOfFoundNodesLabel.Text = nodesFound.ToString() + " nodes";
+                    FindResultsLabel.Text = String.Format("Found: {0} nodes", nodesFound.ToString());
 
                     if (nodesFound == 0)
                         MessageBox.Show("Tag '" + searchText.Text + "' was not found.", "Search Results", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

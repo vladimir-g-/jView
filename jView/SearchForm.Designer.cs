@@ -33,19 +33,22 @@
             this.findButton = new System.Windows.Forms.Button();
             this.CloseSearchDialogButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.foundLabel = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.numberOfFoundNodesLabel = new System.Windows.Forms.Label();
+            this.groupSearchOptions = new System.Windows.Forms.GroupBox();
+            this.checkSearchInNames = new System.Windows.Forms.CheckBox();
+            this.checkSearchInValues = new System.Windows.Forms.CheckBox();
+            this.statusSearchBar = new System.Windows.Forms.StatusStrip();
+            this.FindResultsLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupSearchOptions.SuspendLayout();
+            this.statusSearchBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // searchText
             // 
-            this.searchText.Location = new System.Drawing.Point(69, 24);
+            this.searchText.Location = new System.Drawing.Point(42, 24);
             this.searchText.Margin = new System.Windows.Forms.Padding(2);
             this.searchText.Name = "searchText";
-            this.searchText.Size = new System.Drawing.Size(172, 20);
+            this.searchText.Size = new System.Drawing.Size(309, 20);
             this.searchText.TabIndex = 0;
             this.searchText.TextChanged += new System.EventHandler(this.searchText_TextChanged);
             // 
@@ -55,15 +58,15 @@
             this.SearchTextWndLabel.Location = new System.Drawing.Point(10, 27);
             this.SearchTextWndLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SearchTextWndLabel.Name = "SearchTextWndLabel";
-            this.SearchTextWndLabel.Size = new System.Drawing.Size(55, 13);
+            this.SearchTextWndLabel.Size = new System.Drawing.Size(28, 13);
             this.SearchTextWndLabel.TabIndex = 0;
-            this.SearchTextWndLabel.Text = "Tag name";
+            this.SearchTextWndLabel.Text = "Text";
             // 
             // findButton
             // 
             this.findButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.findButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.findButton.Location = new System.Drawing.Point(279, 11);
+            this.findButton.Location = new System.Drawing.Point(391, 11);
             this.findButton.Margin = new System.Windows.Forms.Padding(2);
             this.findButton.Name = "findButton";
             this.findButton.Size = new System.Drawing.Size(71, 28);
@@ -76,7 +79,7 @@
             // 
             this.CloseSearchDialogButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CloseSearchDialogButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CloseSearchDialogButton.Location = new System.Drawing.Point(279, 43);
+            this.CloseSearchDialogButton.Location = new System.Drawing.Point(391, 43);
             this.CloseSearchDialogButton.Margin = new System.Windows.Forms.Padding(2);
             this.CloseSearchDialogButton.Name = "CloseSearchDialogButton";
             this.CloseSearchDialogButton.Size = new System.Drawing.Size(71, 29);
@@ -91,46 +94,68 @@
             this.groupBox1.Controls.Add(this.SearchTextWndLabel);
             this.groupBox1.Location = new System.Drawing.Point(12, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(254, 61);
+            this.groupBox1.Size = new System.Drawing.Size(365, 61);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Find";
             // 
-            // foundLabel
+            // groupSearchOptions
             // 
-            this.foundLabel.AutoSize = true;
-            this.foundLabel.Location = new System.Drawing.Point(10, 28);
-            this.foundLabel.Name = "foundLabel";
-            this.foundLabel.Size = new System.Drawing.Size(40, 13);
-            this.foundLabel.TabIndex = 3;
-            this.foundLabel.Text = "Found:";
+            this.groupSearchOptions.Controls.Add(this.checkSearchInValues);
+            this.groupSearchOptions.Controls.Add(this.checkSearchInNames);
+            this.groupSearchOptions.Location = new System.Drawing.Point(12, 78);
+            this.groupSearchOptions.Name = "groupSearchOptions";
+            this.groupSearchOptions.Size = new System.Drawing.Size(365, 82);
+            this.groupSearchOptions.TabIndex = 5;
+            this.groupSearchOptions.TabStop = false;
+            this.groupSearchOptions.Text = "Search Options";
             // 
-            // groupBox2
+            // checkSearchInNames
             // 
-            this.groupBox2.Controls.Add(this.numberOfFoundNodesLabel);
-            this.groupBox2.Controls.Add(this.foundLabel);
-            this.groupBox2.Location = new System.Drawing.Point(12, 78);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(254, 57);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Result";
+            this.checkSearchInNames.AutoSize = true;
+            this.checkSearchInNames.Checked = true;
+            this.checkSearchInNames.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkSearchInNames.Location = new System.Drawing.Point(13, 34);
+            this.checkSearchInNames.Name = "checkSearchInNames";
+            this.checkSearchInNames.Size = new System.Drawing.Size(105, 17);
+            this.checkSearchInNames.TabIndex = 0;
+            this.checkSearchInNames.Text = "Search in names";
+            this.checkSearchInNames.UseVisualStyleBackColor = true;
             // 
-            // numberOfFoundNodesLabel
+            // checkSearchInValues
             // 
-            this.numberOfFoundNodesLabel.AutoSize = true;
-            this.numberOfFoundNodesLabel.Location = new System.Drawing.Point(56, 28);
-            this.numberOfFoundNodesLabel.Name = "numberOfFoundNodesLabel";
-            this.numberOfFoundNodesLabel.Size = new System.Drawing.Size(0, 13);
-            this.numberOfFoundNodesLabel.TabIndex = 5;
+            this.checkSearchInValues.AutoSize = true;
+            this.checkSearchInValues.Location = new System.Drawing.Point(13, 57);
+            this.checkSearchInValues.Name = "checkSearchInValues";
+            this.checkSearchInValues.Size = new System.Drawing.Size(105, 17);
+            this.checkSearchInValues.TabIndex = 1;
+            this.checkSearchInValues.Text = "Search in values";
+            this.checkSearchInValues.UseVisualStyleBackColor = true;
+            // 
+            // statusSearchBar
+            // 
+            this.statusSearchBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FindResultsLabel});
+            this.statusSearchBar.Location = new System.Drawing.Point(0, 176);
+            this.statusSearchBar.Name = "statusSearchBar";
+            this.statusSearchBar.Size = new System.Drawing.Size(471, 22);
+            this.statusSearchBar.TabIndex = 6;
+            this.statusSearchBar.Text = "Found: ";
+            // 
+            // FindResultsLabel
+            // 
+            this.FindResultsLabel.Name = "FindResultsLabel";
+            this.FindResultsLabel.Size = new System.Drawing.Size(47, 17);
+            this.FindResultsLabel.Text = "Found: ";
             // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CloseSearchDialogButton;
-            this.ClientSize = new System.Drawing.Size(359, 154);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(471, 198);
+            this.Controls.Add(this.statusSearchBar);
+            this.Controls.Add(this.groupSearchOptions);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.CloseSearchDialogButton);
             this.Controls.Add(this.findButton);
@@ -146,9 +171,12 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SearchForm_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupSearchOptions.ResumeLayout(false);
+            this.groupSearchOptions.PerformLayout();
+            this.statusSearchBar.ResumeLayout(false);
+            this.statusSearchBar.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -158,8 +186,10 @@
         private System.Windows.Forms.Label SearchTextWndLabel;
         private System.Windows.Forms.Button CloseSearchDialogButton;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label foundLabel;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label numberOfFoundNodesLabel;
+        private System.Windows.Forms.GroupBox groupSearchOptions;
+        private System.Windows.Forms.CheckBox checkSearchInValues;
+        private System.Windows.Forms.CheckBox checkSearchInNames;
+        private System.Windows.Forms.StatusStrip statusSearchBar;
+        private System.Windows.Forms.ToolStripStatusLabel FindResultsLabel;
     }
 }
