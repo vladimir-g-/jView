@@ -76,10 +76,12 @@ namespace jView
                     jNodesTree.BeginUpdate();
                     jNodesTree.Nodes.Clear();
 
+                    // Add root node. It's will be an object
                     TreeNode node = new TreeNode("JSON");
-                    node.ImageIndex = 0;
+                    node.ImageIndex = (int)objectTypePicture.Object;
                     jNodesTree.Nodes.Add(node);
 
+                    // Load under root node in the tree all other json properties
                     LoadObjectIntoTree(o, ref node);
 
                     jNodesTree.EndUpdate();
@@ -155,7 +157,7 @@ namespace jView
                     }
                     else
                         if (JTokenType.Array == propertyType)
-                            node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Array; // Set image for array  node
+                            node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Array; // Set image for array node
 
                     node.Text = nodeText;
                     node.Name = property.Name; // set node name as tag name for searching purpose
@@ -370,7 +372,7 @@ namespace jView
                 {
                     // searching node having received text
                     //searchResultNodes = jNodesTree.Nodes.Find(searchText, true);
-                    FindNode(jNodesTree.Nodes[0].Nodes, searchText);
+                    FindNode(jNodesTree.Nodes[0].Nodes, searchText, options);
                     //nodesFound = searchResultNodes.Length;
                     nodesFound = searchResultNodes.Count;
 
@@ -411,17 +413,17 @@ namespace jView
             return;
         }
 
-        private void FindNode(TreeNodeCollection nodes, string searchText)
+        private void FindNode(TreeNodeCollection nodes, string searchText, SearchOptions options)
         {
             // Find required node in collection
             foreach(TreeNode node in nodes)
             {
                 // check if node match a condition
-                CheckNodeName(node, searchText);
+                CheckNodeName(node, searchText, options);
             }
         }
 
-        private void CheckNodeName(TreeNode node, string searchText)
+        private void CheckNodeName(TreeNode node, string searchText, SearchOptions options)
         {
             //
             if (node.Name.Contains(searchText))
@@ -433,7 +435,7 @@ namespace jView
             // check all child nodes
             foreach (TreeNode childNode in node.Nodes)
             {
-                CheckNodeName(childNode, searchText);
+                CheckNodeName(childNode, searchText, options);
             }
         }
     }
