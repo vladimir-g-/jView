@@ -208,20 +208,16 @@ namespace jView
                         node.ImageIndex = node.SelectedImageIndex = GetImageIndex(itemType);
 
                         if (JTokenType.String != itemType)
-                            //nodeText = itemIndex.ToString() + " : " + ((JProperty)jToken).Value.ToString();
-                            nodeText = itemIndex.ToString() + " : " + jToken.Value<string>();
+                        {
+                            nodeText = String.Format("{0} : {1}", itemIndex.ToString(), jToken.Value<string>());
+                        }
                         else
                         {
-                            //JProperty prop = jToken.Value<JProperty>();
-                            //string tokenValue = jToken.Value<string>();
-                            nodeText = itemIndex.ToString() + " : \"" + jToken.Value<string>() + "\"";
-
-                            //nodeText = itemIndex.ToString() + ": \"" + ((JProperty)jToken).Value + "\"";
+                            nodeText = String.Format("{0} : \"{1}\"", itemIndex.ToString(), jToken.Value<string>());
                         }
 
                         // Add a new node
                         node.Text = nodeText;
-                        //node.Name = ; // set node name as tag name for searching purpose
 
                         parentNode.Nodes.Add(node);
                     }
