@@ -107,6 +107,12 @@ namespace jView
 
             switch (tokenType)
             {
+                case JTokenType.Array:
+                    ResultValue = (int)objectTypePicture.Array;
+                    break;
+                case JTokenType.Object:
+                    ResultValue = (int)objectTypePicture.Object;
+                    break;
                 case JTokenType.String:
                     ResultValue = (int)objectTypePicture.Text;
                     break;
@@ -138,7 +144,6 @@ namespace jView
                     if (JTokenType.Object != propertyType && JTokenType.Array != propertyType)
                     {
                         // This is not an object or an array
-                        node.ImageIndex = node.SelectedImageIndex = GetImageIndex(propertyType);
 
                         if (JTokenType.String != propertyType)
                             nodeText = property.Name + " : " + property.Value.ToString();
@@ -151,13 +156,7 @@ namespace jView
                     }
 
                     // Set proper node image
-                    if (JTokenType.Object == propertyType)
-                    {
-                        node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Object; // Set images for object node
-                    }
-                    else
-                        if (JTokenType.Array == propertyType)
-                            node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Array; // Set image for array node
+                    node.ImageIndex = node.SelectedImageIndex = GetImageIndex(propertyType);
 
                     node.Text = nodeText;
                     node.Name = property.Name; // set node name as tag name for searching purpose
@@ -367,13 +366,11 @@ namespace jView
         {
             if (searchText.Length > 0)
             {
-                // Check whether we did search before
+                // Check whether we did search before AND tree contains any node
                 if (selectedNode == -1 && jNodesTree.Nodes.Count > 0)
                 {
-                    // searching node having received text
-                    //searchResultNodes = jNodesTree.Nodes.Find(searchText, true);
+                    // searching node having received text startin with root node
                     FindNode(jNodesTree.Nodes[0].Nodes, searchText, options);
-                    //nodesFound = searchResultNodes.Length;
                     nodesFound = searchResultNodes.Count;
 
                     if (nodesFound > 0)

@@ -36,8 +36,11 @@ namespace jView
             if (searchByText != null)
             {
                 SearchOptions options = new SearchOptions();
+
+                // set search options
                 options.FindName = checkSearchInNames.Checked;
                 options.FindValue = checkSearchInValues.Checked;
+                options.CaseSensitive = checkCaseSensitive.Checked;
 
                 nodesFound = searchByText(searchText.Text, options);
 
