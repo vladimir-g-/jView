@@ -146,9 +146,12 @@ namespace jView
                         // This is not an object or an array
 
                         if (JTokenType.String != propertyType)
-                            nodeText = property.Name + " : " + property.Value.ToString();
+                            nodeText = property.Name + " : " + property.Value.ToString(); // this is not a string
                         else
-                            nodeText = property.Name + " : \"" + property.Value + "\"";
+                            nodeText = property.Name + " : \"" + property.Value + "\""; // this is a string, add extra \"
+
+                        // add data containig json tag value
+                        node.Tag = jToken;
                     }
                     else
                     {
@@ -182,7 +185,6 @@ namespace jView
         {
             if (jsonArray.Count > 0)
             {
-                //int itemIndex = 0;
                 JTokenType itemType;
                 JToken jToken;
                 string nodeText;
@@ -209,15 +211,18 @@ namespace jView
 
                         if (JTokenType.String != itemType)
                         {
-                            nodeText = String.Format("{0} : {1}", itemIndex.ToString(), jToken.Value<string>());
+                            nodeText = String.Format("[{0}] : {1}", itemIndex.ToString(), jToken.Value<string>());
                         }
                         else
                         {
-                            nodeText = String.Format("{0} : \"{1}\"", itemIndex.ToString(), jToken.Value<string>());
+                            nodeText = String.Format("[{0}] : \"{1}\"", itemIndex.ToString(), jToken.Value<string>());
                         }
 
                         // Add a new node
                         node.Text = nodeText;
+
+                        // Add tag dada
+                        node.Tag = jToken;
 
                         parentNode.Nodes.Add(node);
                     }
@@ -227,10 +232,7 @@ namespace jView
                         nodeText = itemIndex.ToString();
 
                         // Set proper image index
-                        if (JTokenType.Object == itemType)
-                            node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Object;
-                        else if (JTokenType.Array == itemType)
-                                node.ImageIndex = node.SelectedImageIndex = (int)objectTypePicture.Array;
+                        node.ImageIndex = node.SelectedImageIndex = GetImageIndex(itemType);
 
                         // Add a new node
                         node.Text = nodeText;
@@ -412,10 +414,12 @@ namespace jView
             foreach(TreeNode node in nodes)
             {
                 // check if node match a condition
-                CheckNodeName(node, searchText, options);
+                //CheckNodeName(node, searchText, options); // Old search function
+                CheckNode(node, searchText, options);
             }
         }
 
+        // Old and currently unused function
         private void CheckNodeName(TreeNode node, string searchText, SearchOptions options)
         {
             //
@@ -428,7 +432,67 @@ namespace jView
             // check all child nodes
             foreach (TreeNode childNode in node.Nodes)
             {
-                CheckNodeName(childNode, searchText, options);
+                //CheckNodeName(childNode, searchText, options);
+                CheckNode(childNode, searchText, options);
+            }
+        }
+
+        /// <summary>
+        /// Checks tree node on matching required text according to specific search conditions
+        /// </summary>
+        /// <param name="node">Node that should be checked</param>
+        /// <param name="searchText">Search text</param>
+        /// <param name="options">Search options defining where we should seacrh the text and case sensivity parameter</param>
+        private void CheckNode(TreeNode node, string searchText, SearchOptions options)
+        {
+            string searchTextConverted;    // search text converted to case sensitive/insensitive value
+            string nodeNameConverted;      // node name converted to case sensitive/insensitive value
+            string convertedValue = "";     // a value linked to a node and converted to case sensitive/insensitive value
+            bool hitNode = false;           // indicator showing that we found required node
+            JToken jToken = (JToken)node.Tag;
+            
+
+            if (options.CaseSensitive == false)
+            {
+                // not sensitive comparison was chosen
+                searchTextConverted = searchText.ToLower();
+                nodeNameConverted = node.Name.ToLower();
+                if (jToken != null)
+                    if (jToken.Type != JTokenType.Null)
+                        convertedValue = jToken.Value<string>().ToLower();
+            }
+            else
+            {
+                // case sensitive search options was chosen
+                searchTextConverted = searchText;
+                nodeNameConverted = node.Name;
+                if (jToken != null)
+                    convertedValue = jToken.Value<string>();
+            }
+
+            if (options.FindName == true)
+            {
+                // Find text in name
+                if (nodeNameConverted.Contains(searchTextConverted))
+                    hitNode = true;
+            }
+
+            if (options.FindValue == true)
+            {
+                // Find text in value
+                if (convertedValue != null)
+                    if (convertedValue.Length > 0)
+                        if (convertedValue.Contains(searchTextConverted))
+                            hitNode = true;
+            }
+
+            if (hitNode == true)
+                searchResultNodes.Add(node);
+
+            // check all child nodes
+            foreach (TreeNode childNode in node.Nodes)
+            {
+                CheckNode(childNode, searchText, options);
             }
         }
     }

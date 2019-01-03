@@ -34,11 +34,11 @@
             this.CloseSearchDialogButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupSearchOptions = new System.Windows.Forms.GroupBox();
+            this.checkCaseSensitive = new System.Windows.Forms.CheckBox();
             this.checkSearchInValues = new System.Windows.Forms.CheckBox();
             this.checkSearchInNames = new System.Windows.Forms.CheckBox();
             this.statusSearchBar = new System.Windows.Forms.StatusStrip();
             this.FindResultsLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.checkCaseSensitive = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupSearchOptions.SuspendLayout();
             this.statusSearchBar.SuspendLayout();
@@ -112,6 +112,16 @@
             this.groupSearchOptions.TabStop = false;
             this.groupSearchOptions.Text = "Search Options";
             // 
+            // checkCaseSensitive
+            // 
+            this.checkCaseSensitive.AutoSize = true;
+            this.checkCaseSensitive.Location = new System.Drawing.Point(167, 34);
+            this.checkCaseSensitive.Name = "checkCaseSensitive";
+            this.checkCaseSensitive.Size = new System.Drawing.Size(94, 17);
+            this.checkCaseSensitive.TabIndex = 2;
+            this.checkCaseSensitive.Text = "Case sensitive";
+            this.checkCaseSensitive.UseVisualStyleBackColor = true;
+            // 
             // checkSearchInValues
             // 
             this.checkSearchInValues.AutoSize = true;
@@ -150,16 +160,6 @@
             this.FindResultsLabel.Size = new System.Drawing.Size(47, 17);
             this.FindResultsLabel.Text = "Found: ";
             // 
-            // checkCaseSensitive
-            // 
-            this.checkCaseSensitive.AutoSize = true;
-            this.checkCaseSensitive.Location = new System.Drawing.Point(167, 34);
-            this.checkCaseSensitive.Name = "checkCaseSensitive";
-            this.checkCaseSensitive.Size = new System.Drawing.Size(94, 17);
-            this.checkCaseSensitive.TabIndex = 2;
-            this.checkCaseSensitive.Text = "Case sensitive";
-            this.checkCaseSensitive.UseVisualStyleBackColor = true;
-            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,7 +178,7 @@
             this.Name = "SearchForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "Search Tag";
+            this.Text = "Search Node";
             this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SearchForm_FormClosed);
             this.groupBox1.ResumeLayout(false);
