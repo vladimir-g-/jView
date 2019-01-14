@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="json_tree_icon_Uiy_icon.ico" />
+    <None Include="Resources\Search2-48.png" />
     <None Include="Resources\Search-48.png" />
   </ItemGroup>
   <ItemGroup>

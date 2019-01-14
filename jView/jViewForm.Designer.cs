@@ -99,7 +99,7 @@
             // 
             // SearchNodeMenuItem
             // 
-            this.SearchNodeMenuItem.Image = global::jView.Properties.Resources.Search_48;
+            this.SearchNodeMenuItem.Image = global::jView.Properties.Resources.Search2_48;
             this.SearchNodeMenuItem.Name = "SearchNodeMenuItem";
             this.SearchNodeMenuItem.Size = new System.Drawing.Size(184, 26);
             this.SearchNodeMenuItem.Text = "Search Node";
@@ -210,7 +210,7 @@
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::jView.Properties.Resources.Search_48;
+            this.toolStripButton1.Image = global::jView.Properties.Resources.Search2_48;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
