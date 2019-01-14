@@ -44,6 +44,7 @@
             this.originalFileText = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -98,8 +99,9 @@
             // 
             // SearchNodeMenuItem
             // 
+            this.SearchNodeMenuItem.Image = global::jView.Properties.Resources.Search_48;
             this.SearchNodeMenuItem.Name = "SearchNodeMenuItem";
-            this.SearchNodeMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.SearchNodeMenuItem.Size = new System.Drawing.Size(184, 26);
             this.SearchNodeMenuItem.Text = "Search Node";
             this.SearchNodeMenuItem.ToolTipText = "Search Node in the Tree";
             this.SearchNodeMenuItem.Click += new System.EventHandler(this.SearchNodeMenuItem_Click);
@@ -122,7 +124,7 @@
             this.tabPage1.Controls.Add(this.jNodesTree);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(497, 221);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tree";
@@ -160,7 +162,7 @@
             this.tabPage2.Controls.Add(this.originalFileText);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(497, 221);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Text";
@@ -186,7 +188,8 @@
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OpenFileButton});
+            this.OpenFileButton,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(505, 27);
@@ -203,6 +206,16 @@
             this.OpenFileButton.Text = "toolStripButton1";
             this.OpenFileButton.ToolTipText = "Open file";
             this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::jView.Properties.Resources.Search_48;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton1.Text = "Search node";
+            this.toolStripButton1.Click += new System.EventHandler(this.SearchNodeMenuItem_Click);
             // 
             // jViewForm
             // 
@@ -245,6 +258,7 @@
         private System.Windows.Forms.ImageList treeImageList;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SearchNodeMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 
