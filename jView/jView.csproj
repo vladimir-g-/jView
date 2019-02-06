@@ -52,7 +52,7 @@
     <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>json_tree_icon_Uiy_icon.ico</ApplicationIcon>
+    <ApplicationIcon>json_tree.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>7229CB6BEC08FBF8994FD36EF0E4243812DEFF36</ManifestCertificateThumbprint>
@@ -64,11 +64,13 @@
     <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
@@ -137,6 +139,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="json_tree.ico" />
     <Content Include="json_tree_icon_Uiy_icon.ico" />
     <None Include="Resources\Search2-48.png" />
     <None Include="Resources\Search-48.png" />

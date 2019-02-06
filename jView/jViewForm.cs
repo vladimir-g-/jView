@@ -27,32 +27,38 @@ namespace jView
         private static int selectedNode = -1; // index of tree node which were selected during searching. -1 means no search was done before
         private static int nodesFound = -1; // Number of nodes were found during search. -1 means no search was done before
 
+        private bool fileWasChanged = false;
+
         private void GetFile()
         {
             OpenFileDialog dlg = new OpenFileDialog();
             DialogResult dlgResult = dlg.ShowDialog();
             if (dlgResult == DialogResult.OK)
             {
-                jsonFileName = dlg.FileName;
-
                 // Load json file into Tree and text window
-                //LoadNodesFromFile(jsonFileName);
-                LoadFileByName(jsonFileName);
-
-                //this.Text = jsonFileName;
+                LoadFileByName(dlg.FileName);
             }
         }
-        private bool LoadFileByName(string FileName)
+
+        private void UpdateWindowCaption()
         {
             //
-            bool RetValue = false;
+            this.Text = jsonFileName;
+            if (fileWasChanged == true)
+                this.Text += " (*)";
+        }
+        
+        // Load json file by it's name
+        private void LoadFileByName(string FileName)
+        {
+            if ( LoadNodesFromFile(FileName) == true )
+            {
+                // file was loaded successfully
+                jsonFileName = FileName;
+                fileWasChanged = false;
 
-            RetValue = LoadNodesFromFile(FileName);
-
-            if (RetValue == true)
-                this.Text = FileName;
-
-            return RetValue;
+                UpdateWindowCaption();
+            }
         }
 
         private bool LoadNodesFromFile(string FileName)
@@ -494,6 +500,13 @@ namespace jView
             {
                 CheckNode(childNode, searchText, options);
             }
+        }
+
+        private void originalFileText_TextChanged(object sender, EventArgs e)
+        {
+            // Text was changed
+            fileWasChanged = true;
+            UpdateWindowCaption();
         }
     }
 }

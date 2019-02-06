@@ -72,5 +72,11 @@ namespace jView
             clearSearchResults();
             findButton.Text = "Find";
         }
+
+        private void searchText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                findButton_Click(sender, null);
+        }
     }
 }
