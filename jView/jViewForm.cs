@@ -76,16 +76,9 @@ namespace jView
                     // Load file in text control
                     originalFileText.Text = o.ToString();
 
-                    //Load nodes into tree
-                    //TreeNode rootNode = null;
-
                     jNodesTree.BeginUpdate();
-                    jNodesTree.Nodes.Clear();
 
-                    // Add root node. It's will be an object
-                    TreeNode node = new TreeNode("JSON");
-                    node.ImageIndex = (int)objectTypePicture.Object;
-                    jNodesTree.Nodes.Add(node);
+                    TreeNode node = CreateRootNode();
 
                     // Load under root node in the tree all other json properties
                     LoadObjectIntoTree(o, ref node);
@@ -100,6 +93,56 @@ namespace jView
                 MessageBox.Show(e.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return retValue;
+        }
+
+        /// <summary>
+        /// Load json object into tree from text window
+        /// </summary>
+        private void LoadNodesFromTextWindow()
+        {
+            if (originalFileText.Text.Length > 0 && fileWasChanged == true)
+            {
+                // text window contains text that can be loaded into tree and original file body was changed
+                try
+                {
+                    JObject jParsedObject = JObject.Parse(originalFileText.Text);
+
+                    TreeNode node = CreateRootNode();
+
+                    jNodesTree.BeginUpdate();
+
+                    // Load under root node in the tree all other json properties
+                    LoadObjectIntoTree(jParsedObject, ref node);
+
+                    jNodesTree.EndUpdate();
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show(String.Format("Incorrect JSON.\n{0}", e.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return;
+        }
+
+        /// <summary>
+        /// Create a root node in the tree, removing all existing nodes before this operations
+        /// </summary>
+        /// <returns>Created root tree node</returns>
+        private TreeNode CreateRootNode()
+        {
+            // Remove all exsting nodes before creation root one
+            jNodesTree.Nodes.Clear();
+
+            // Create new node which will be root.
+            TreeNode node = new TreeNode("JSON");
+
+            // set a picture for root node. It will be an object
+            node.ImageIndex = (int)objectTypePicture.Object;
+
+            // Add a root node to cleared collection
+            jNodesTree.Nodes.Add(node);
+
+            return node;
         }
 
         /// <summary>
@@ -134,6 +177,11 @@ namespace jView
             return ResultValue;
         }
 
+        /// <summary>
+        /// Load JSON object into tree
+        /// </summary>
+        /// <param name="jsonObject">Object for loading into tree</param>
+        /// <param name="parentNode">Parent tree node</param>
         private void LoadObjectIntoTree(JObject jsonObject, ref TreeNode parentNode)
         {
             if (null != parentNode)
@@ -507,6 +555,16 @@ namespace jView
             // Text was changed
             fileWasChanged = true;
             UpdateWindowCaption();
+        }
+
+        private void loadFromTextButton_Click(object sender, EventArgs e)
+        {
+            LoadNodesFromTextWindow();
+        }
+
+        private void reloadTreeFromTextToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadNodesFromTextWindow();
         }
     }
 }
