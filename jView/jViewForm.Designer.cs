@@ -45,6 +45,9 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.loadFromTextButton = new System.Windows.Forms.ToolStripButton();
+            this.reloadTreeFromTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -92,16 +95,17 @@
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SearchNodeMenuItem});
+            this.SearchNodeMenuItem,
+            this.reloadTreeFromTextToolStripMenuItem});
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.searchToolStripMenuItem.Text = "Search";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.searchToolStripMenuItem.Text = "Tools";
             // 
             // SearchNodeMenuItem
             // 
             this.SearchNodeMenuItem.Image = global::jView.Properties.Resources.Search2_48;
             this.SearchNodeMenuItem.Name = "SearchNodeMenuItem";
-            this.SearchNodeMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.SearchNodeMenuItem.Size = new System.Drawing.Size(141, 22);
             this.SearchNodeMenuItem.Text = "Search Node";
             this.SearchNodeMenuItem.ToolTipText = "Search Node in the Tree";
             this.SearchNodeMenuItem.Click += new System.EventHandler(this.SearchNodeMenuItem_Click);
@@ -174,6 +178,7 @@
             this.originalFileText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.originalFileText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.originalFileText.Location = new System.Drawing.Point(0, 3);
             this.originalFileText.Margin = new System.Windows.Forms.Padding(2);
             this.originalFileText.Multiline = true;
@@ -181,6 +186,7 @@
             this.originalFileText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.originalFileText.Size = new System.Drawing.Size(496, 218);
             this.originalFileText.TabIndex = 0;
+            this.originalFileText.TextChanged += new System.EventHandler(this.originalFileText_TextChanged);
             this.originalFileText.DragDrop += new System.Windows.Forms.DragEventHandler(this.originalFileText_DragDrop);
             this.originalFileText.DragEnter += new System.Windows.Forms.DragEventHandler(this.originalFileText_DragEnter);
             // 
@@ -189,7 +195,9 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenFileButton,
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.toolStripSeparator1,
+            this.loadFromTextButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(505, 27);
@@ -216,6 +224,31 @@
             this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton1.Text = "Search node";
             this.toolStripButton1.Click += new System.EventHandler(this.SearchNodeMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            // 
+            // loadFromTextButton
+            // 
+            this.loadFromTextButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.loadFromTextButton.Image = global::jView.Properties.Resources.refresh;
+            this.loadFromTextButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.loadFromTextButton.Name = "loadFromTextButton";
+            this.loadFromTextButton.Size = new System.Drawing.Size(24, 24);
+            this.loadFromTextButton.Text = "toolStripButton2";
+            this.loadFromTextButton.ToolTipText = "Refresh tree from text";
+            this.loadFromTextButton.Click += new System.EventHandler(this.loadFromTextButton_Click);
+            // 
+            // reloadTreeFromTextToolStripMenuItem
+            // 
+            this.reloadTreeFromTextToolStripMenuItem.Image = global::jView.Properties.Resources.refresh;
+            this.reloadTreeFromTextToolStripMenuItem.Name = "reloadTreeFromTextToolStripMenuItem";
+            this.reloadTreeFromTextToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.reloadTreeFromTextToolStripMenuItem.Text = "Reload tree from text";
+            this.reloadTreeFromTextToolStripMenuItem.ToolTipText = "Refresh tree from text";
+            this.reloadTreeFromTextToolStripMenuItem.Click += new System.EventHandler(this.reloadTreeFromTextToolStripMenuItem_Click);
             // 
             // jViewForm
             // 
@@ -259,6 +292,9 @@
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SearchNodeMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton loadFromTextButton;
+        private System.Windows.Forms.ToolStripMenuItem reloadTreeFromTextToolStripMenuItem;
     }
 }
 

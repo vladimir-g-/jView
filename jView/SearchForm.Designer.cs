@@ -52,6 +52,7 @@
             this.searchText.Size = new System.Drawing.Size(233, 20);
             this.searchText.TabIndex = 0;
             this.searchText.TextChanged += new System.EventHandler(this.searchText_TextChanged);
+            this.searchText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchText_KeyDown);
             // 
             // SearchTextWndLabel
             // 
