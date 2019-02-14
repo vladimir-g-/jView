@@ -22,7 +22,6 @@ namespace jView
     public partial class jViewForm : Form
     {
         private string jsonFileName;
-        //private static TreeNode[] searchResultNodes = new TreeNode[0]; // List of tree nodes were found
         private static List<TreeNode> searchResultNodes = new List<TreeNode>();
         private static int selectedNode = -1; // index of tree node which were selected during searching. -1 means no search was done before
         private static int nodesFound = -1; // Number of nodes were found during search. -1 means no search was done before
@@ -452,9 +451,6 @@ namespace jView
 
         private void ClearSearchResult()
         {
-            //if (searchResultNodes.Length > 0)
-            //    Array.Clear(searchResultNodes, 0, nodesFound);
-
             selectedNode = -1;
             nodesFound = -1;
             searchResultNodes.Clear();
@@ -468,26 +464,7 @@ namespace jView
             foreach(TreeNode node in nodes)
             {
                 // check if node match a condition
-                //CheckNodeName(node, searchText, options); // Old search function
                 CheckNode(node, searchText, options);
-            }
-        }
-
-        // Old and currently unused function
-        private void CheckNodeName(TreeNode node, string searchText, SearchOptions options)
-        {
-            //
-            if (node.Name.Contains(searchText))
-            {
-                // we found a node having specified text string
-                searchResultNodes.Add(node);
-            }
-
-            // check all child nodes
-            foreach (TreeNode childNode in node.Nodes)
-            {
-                //CheckNodeName(childNode, searchText, options);
-                CheckNode(childNode, searchText, options);
             }
         }
 
