@@ -122,6 +122,7 @@
             this.checkCaseSensitive.TabIndex = 2;
             this.checkCaseSensitive.Text = "Case sensitive";
             this.checkCaseSensitive.UseVisualStyleBackColor = true;
+            this.checkCaseSensitive.CheckedChanged += new System.EventHandler(this.checkCaseSensitive_CheckedChanged);
             // 
             // checkSearchInValues
             // 
@@ -132,6 +133,7 @@
             this.checkSearchInValues.TabIndex = 1;
             this.checkSearchInValues.Text = "Search in values";
             this.checkSearchInValues.UseVisualStyleBackColor = true;
+            this.checkSearchInValues.CheckedChanged += new System.EventHandler(this.checkSearchInValues_CheckedChanged);
             // 
             // checkSearchInNames
             // 
@@ -144,6 +146,7 @@
             this.checkSearchInNames.TabIndex = 0;
             this.checkSearchInNames.Text = "Search in names";
             this.checkSearchInNames.UseVisualStyleBackColor = true;
+            this.checkSearchInNames.CheckedChanged += new System.EventHandler(this.checkSearchInNames_CheckedChanged);
             // 
             // statusSearchBar
             // 

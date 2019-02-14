@@ -21,7 +21,7 @@ namespace jView
 
     public partial class jViewForm : Form
     {
-        private string jsonFileName;
+        private string jsonFileName; // name of currently loaded file
         private static List<TreeNode> searchResultNodes = new List<TreeNode>();
         private static int selectedNode = -1; // index of tree node which were selected during searching. -1 means no search was done before
         private static int nodesFound = -1; // Number of nodes were found during search. -1 means no search was done before

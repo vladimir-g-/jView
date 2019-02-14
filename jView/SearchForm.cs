@@ -33,7 +33,7 @@ namespace jView
             int nodesFound = 0;
 
             // Find button was clicked ...
-            if (searchByText != null)
+            if (searchByText != null && (checkSearchInNames.Checked || checkSearchInValues.Checked))
             {
                 SearchOptions options = new SearchOptions();
 
@@ -64,19 +64,46 @@ namespace jView
 
         private void SearchForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            clearSearchResults();
+            if (clearSearchResults != null)
+                clearSearchResults();
+        }
+
+        /// <summary>
+        /// Reset search conditions. Clear search reasults and prepare for searching from the begining
+        /// </summary>
+        private void ResetSearchResults()
+        {
+            if (clearSearchResults != null)
+                clearSearchResults();
+
+            findButton.Text = "Find";           // set initial caption for button
+            FindResultsLabel.Text = "Found:";   // set initial text for status bar label
         }
 
         private void searchText_TextChanged(object sender, EventArgs e)
         {
-            clearSearchResults();
-            findButton.Text = "Find";
+            ResetSearchResults();
         }
 
         private void searchText_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
                 findButton_Click(sender, null);
+        }
+
+        private void checkSearchInNames_CheckedChanged(object sender, EventArgs e)
+        {
+            ResetSearchResults();
+        }
+
+        private void checkSearchInValues_CheckedChanged(object sender, EventArgs e)
+        {
+            ResetSearchResults();
+        }
+
+        private void checkCaseSensitive_CheckedChanged(object sender, EventArgs e)
+        {
+            ResetSearchResults();
         }
     }
 }
