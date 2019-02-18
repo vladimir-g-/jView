@@ -11,11 +11,9 @@ namespace jView
     /// </summary>
     public class SearchOptions
     {
-        //private bool findName;
-        //private bool findValue;
-
         public bool FindName { get; set; }
         public bool FindValue { get; set; }
         public bool CaseSensitive { get; set; }
+        public bool ExactMatch { get; set; }
     }
 }

@@ -41,6 +41,7 @@ namespace jView
                 options.FindName = checkSearchInNames.Checked;
                 options.FindValue = checkSearchInValues.Checked;
                 options.CaseSensitive = checkCaseSensitive.Checked;
+                options.ExactMatch = checkExactMatch.Checked;
 
                 nodesFound = searchByText(searchText.Text, options);
 
@@ -102,6 +103,11 @@ namespace jView
         }
 
         private void checkCaseSensitive_CheckedChanged(object sender, EventArgs e)
+        {
+            ResetSearchResults();
+        }
+
+        private void checkExactMatch_CheckedChanged(object sender, EventArgs e)
         {
             ResetSearchResults();
         }

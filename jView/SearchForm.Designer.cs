@@ -39,6 +39,7 @@
             this.checkSearchInNames = new System.Windows.Forms.CheckBox();
             this.statusSearchBar = new System.Windows.Forms.StatusStrip();
             this.FindResultsLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.checkExactMatch = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupSearchOptions.SuspendLayout();
             this.statusSearchBar.SuspendLayout();
@@ -103,6 +104,7 @@
             // 
             // groupSearchOptions
             // 
+            this.groupSearchOptions.Controls.Add(this.checkExactMatch);
             this.groupSearchOptions.Controls.Add(this.checkCaseSensitive);
             this.groupSearchOptions.Controls.Add(this.checkSearchInValues);
             this.groupSearchOptions.Controls.Add(this.checkSearchInNames);
@@ -164,6 +166,17 @@
             this.FindResultsLabel.Size = new System.Drawing.Size(47, 17);
             this.FindResultsLabel.Text = "Found: ";
             // 
+            // checkExactMatch
+            // 
+            this.checkExactMatch.AutoSize = true;
+            this.checkExactMatch.Location = new System.Drawing.Point(167, 57);
+            this.checkExactMatch.Name = "checkExactMatch";
+            this.checkExactMatch.Size = new System.Drawing.Size(86, 17);
+            this.checkExactMatch.TabIndex = 3;
+            this.checkExactMatch.Text = "Exact Match";
+            this.checkExactMatch.UseVisualStyleBackColor = true;
+            this.checkExactMatch.CheckedChanged += new System.EventHandler(this.checkExactMatch_CheckedChanged);
+            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,5 +221,6 @@
         private System.Windows.Forms.StatusStrip statusSearchBar;
         private System.Windows.Forms.ToolStripStatusLabel FindResultsLabel;
         private System.Windows.Forms.CheckBox checkCaseSensitive;
+        private System.Windows.Forms.CheckBox checkExactMatch;
     }
 }

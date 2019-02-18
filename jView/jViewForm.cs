@@ -485,7 +485,7 @@ namespace jView
 
             if (options.CaseSensitive == false)
             {
-                // not sensitive comparison was chosen
+                // case insensitive comparison was chosen. Convert everything in low case
                 searchTextConverted = searchText.ToLower();
                 nodeNameConverted = node.Name.ToLower();
                 if (jToken != null)
@@ -494,27 +494,47 @@ namespace jView
             }
             else
             {
-                // case sensitive search options was chosen
+                // case sensitive search options was chosen. Keep text as is (no case conversion).
                 searchTextConverted = searchText;
                 nodeNameConverted = node.Name;
                 if (jToken != null)
                     convertedValue = jToken.Value<string>();
             }
 
-            if (options.FindName == true)
+            if (options.FindName == true) // Find text in name
             {
-                // Find text in name
-                if (nodeNameConverted.Contains(searchTextConverted))
-                    hitNode = true;
+                // Check should we do exact matching
+                if (options.ExactMatch == false)
+                {
+                    if (nodeNameConverted.Contains(searchTextConverted))
+                        hitNode = true;
+                }
+                else
+                {
+                    if (nodeNameConverted == searchTextConverted)
+                        hitNode = true;
+                }
             }
 
-            if (options.FindValue == true)
+            if (options.FindValue == true) // Find text in value
             {
-                // Find text in value
                 if (convertedValue != null)
+                {
                     if (convertedValue.Length > 0)
-                        if (convertedValue.Contains(searchTextConverted))
-                            hitNode = true;
+                    {
+                        //  Check should we do exact matching
+                        if (options.ExactMatch == false)
+                        {
+                            if (convertedValue.Contains(searchTextConverted))
+                                hitNode = true;
+                        }
+                        else
+                        {
+                            if (convertedValue == searchTextConverted)
+                                hitNode = true;
+                        }
+                    }
+                }
             }
 
             if (hitNode == true)
