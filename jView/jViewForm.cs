@@ -529,9 +529,13 @@ namespace jView
 
         private void originalFileText_TextChanged(object sender, EventArgs e)
         {
-            // Text was changed
-            fileWasChanged = true;
-            UpdateWindowCaption();
+            // Check whether file text was changed
+            if (fileWasChanged == false)
+            {
+                // it was changed. Set flag to avoid caption blinking
+                fileWasChanged = true;
+                UpdateWindowCaption();
+            }
         }
 
         private void loadFromTextButton_Click(object sender, EventArgs e)
