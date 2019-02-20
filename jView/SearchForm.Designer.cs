@@ -34,12 +34,12 @@
             this.CloseSearchDialogButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupSearchOptions = new System.Windows.Forms.GroupBox();
+            this.checkExactMatch = new System.Windows.Forms.CheckBox();
             this.checkCaseSensitive = new System.Windows.Forms.CheckBox();
             this.checkSearchInValues = new System.Windows.Forms.CheckBox();
             this.checkSearchInNames = new System.Windows.Forms.CheckBox();
             this.statusSearchBar = new System.Windows.Forms.StatusStrip();
             this.FindResultsLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.checkExactMatch = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupSearchOptions.SuspendLayout();
             this.statusSearchBar.SuspendLayout();
@@ -115,6 +115,17 @@
             this.groupSearchOptions.TabStop = false;
             this.groupSearchOptions.Text = "Search Options";
             // 
+            // checkExactMatch
+            // 
+            this.checkExactMatch.AutoSize = true;
+            this.checkExactMatch.Location = new System.Drawing.Point(167, 57);
+            this.checkExactMatch.Name = "checkExactMatch";
+            this.checkExactMatch.Size = new System.Drawing.Size(85, 17);
+            this.checkExactMatch.TabIndex = 3;
+            this.checkExactMatch.Text = "Exact match";
+            this.checkExactMatch.UseVisualStyleBackColor = true;
+            this.checkExactMatch.CheckedChanged += new System.EventHandler(this.checkExactMatch_CheckedChanged);
+            // 
             // checkCaseSensitive
             // 
             this.checkCaseSensitive.AutoSize = true;
@@ -165,17 +176,6 @@
             this.FindResultsLabel.Name = "FindResultsLabel";
             this.FindResultsLabel.Size = new System.Drawing.Size(47, 17);
             this.FindResultsLabel.Text = "Found: ";
-            // 
-            // checkExactMatch
-            // 
-            this.checkExactMatch.AutoSize = true;
-            this.checkExactMatch.Location = new System.Drawing.Point(167, 57);
-            this.checkExactMatch.Name = "checkExactMatch";
-            this.checkExactMatch.Size = new System.Drawing.Size(86, 17);
-            this.checkExactMatch.TabIndex = 3;
-            this.checkExactMatch.Text = "Exact Match";
-            this.checkExactMatch.UseVisualStyleBackColor = true;
-            this.checkExactMatch.CheckedChanged += new System.EventHandler(this.checkExactMatch_CheckedChanged);
             // 
             // SearchForm
             // 
