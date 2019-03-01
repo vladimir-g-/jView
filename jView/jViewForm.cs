@@ -50,11 +50,16 @@ namespace jView
         // Load json file by it's name
         private void LoadFileByName(string FileName)
         {
+            saveAsMenuItem.Enabled = false;
+            saveMenuItem.Enabled = false;
+
             if ( LoadNodesFromFile(FileName) == true )
             {
                 // file was loaded successfully
                 jsonFileName = FileName;
                 fileWasChanged = false;
+
+                saveAsMenuItem.Enabled = true;
 
                 UpdateWindowCaption();
             }
@@ -555,6 +560,10 @@ namespace jView
                 // it was changed. Set flag to avoid caption blinking
                 fileWasChanged = true;
                 UpdateWindowCaption();
+
+                // enable save menu items
+                saveMenuItem.Enabled = true;
+                saveAsMenuItem.Enabled = true;
             }
         }
 
@@ -563,7 +572,7 @@ namespace jView
             LoadNodesFromTextWindow();
         }
 
-        private void reloadTreeFromTextToolStripMenuItem_Click(object sender, EventArgs e)
+        private void reloadTreeFromTextToolMenuItem_Click(object sender, EventArgs e)
         {
             LoadNodesFromTextWindow();
         }
