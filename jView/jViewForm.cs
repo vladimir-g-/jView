@@ -635,7 +635,7 @@ namespace jView
             if (dlgResult == DialogResult.OK)
             {
                 // Save json file 
-                if (SaveJsonToFile(dlg.FileName)) // jsonFileName
+                if (SaveJsonToFile(dlg.FileName))
                 {
                     // file was saved successfully. Load it again
                     LoadFileByName(dlg.FileName);
