@@ -33,6 +33,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchNodeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,9 +51,6 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.loadFromTextButton = new System.Windows.Forms.ToolStripButton();
-            this.saveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -90,6 +90,27 @@
             this.OpenMenuItem.ToolTipText = "Open file";
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
             // 
+            // saveMenuItem
+            // 
+            this.saveMenuItem.Enabled = false;
+            this.saveMenuItem.Name = "saveMenuItem";
+            this.saveMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveMenuItem.Text = "Save";
+            this.saveMenuItem.Click += new System.EventHandler(this.saveMenuItem_Click);
+            // 
+            // saveAsMenuItem
+            // 
+            this.saveAsMenuItem.Enabled = false;
+            this.saveAsMenuItem.Name = "saveAsMenuItem";
+            this.saveAsMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsMenuItem.Text = "Save As...";
+            this.saveAsMenuItem.Click += new System.EventHandler(this.saveAsMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
             // ExitMenuItem
             // 
             this.ExitMenuItem.Name = "ExitMenuItem";
@@ -111,7 +132,7 @@
             // 
             this.SearchNodeMenuItem.Image = global::jView.Properties.Resources.Search2_48;
             this.SearchNodeMenuItem.Name = "SearchNodeMenuItem";
-            this.SearchNodeMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.SearchNodeMenuItem.Size = new System.Drawing.Size(184, 22);
             this.SearchNodeMenuItem.Text = "Search Node";
             this.SearchNodeMenuItem.ToolTipText = "Search Node in the Tree";
             this.SearchNodeMenuItem.Click += new System.EventHandler(this.SearchNodeMenuItem_Click);
@@ -120,7 +141,7 @@
             // 
             this.reloadTreeFromTextMenuItem.Image = global::jView.Properties.Resources.refresh;
             this.reloadTreeFromTextMenuItem.Name = "reloadTreeFromTextMenuItem";
-            this.reloadTreeFromTextMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.reloadTreeFromTextMenuItem.Size = new System.Drawing.Size(184, 22);
             this.reloadTreeFromTextMenuItem.Text = "Reload tree from text";
             this.reloadTreeFromTextMenuItem.ToolTipText = "Refresh tree from text";
             this.reloadTreeFromTextMenuItem.Click += new System.EventHandler(this.reloadTreeFromTextToolMenuItem_Click);
@@ -255,25 +276,6 @@
             this.loadFromTextButton.Text = "toolStripButton2";
             this.loadFromTextButton.ToolTipText = "Refresh tree from text";
             this.loadFromTextButton.Click += new System.EventHandler(this.loadFromTextButton_Click);
-            // 
-            // saveMenuItem
-            // 
-            this.saveMenuItem.Enabled = false;
-            this.saveMenuItem.Name = "saveMenuItem";
-            this.saveMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveMenuItem.Text = "Save";
-            // 
-            // saveAsMenuItem
-            // 
-            this.saveAsMenuItem.Enabled = false;
-            this.saveAsMenuItem.Name = "saveAsMenuItem";
-            this.saveAsMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveAsMenuItem.Text = "Save As...";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // jViewForm
             // 

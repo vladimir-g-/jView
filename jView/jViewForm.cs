@@ -39,12 +39,17 @@ namespace jView
             }
         }
 
+        /// <summary>
+        /// Update window caption to show currently loaded file and mark it if it was changed
+        /// </summary>
         private void UpdateWindowCaption()
         {
-            //
-            this.Text = jsonFileName;
+            string newWindowCaption = jsonFileName;
+
             if (fileWasChanged == true)
-                this.Text += " (*)";
+                newWindowCaption += " (*)";
+
+            this.Text = newWindowCaption;
         }
         
         // Load json file by it's name
@@ -57,10 +62,14 @@ namespace jView
             {
                 // file was loaded successfully
                 jsonFileName = FileName;
+
+                // reseet important varialbles as they were changed after inserting text in the text box
                 fileWasChanged = false;
 
                 saveAsMenuItem.Enabled = true;
+                saveMenuItem.Enabled = false;
 
+                // Update window caption again as in could be changed during inserting text in the text box
                 UpdateWindowCaption();
             }
         }
@@ -575,6 +584,63 @@ namespace jView
         private void reloadTreeFromTextToolMenuItem_Click(object sender, EventArgs e)
         {
             LoadNodesFromTextWindow();
+        }
+
+        /// <summary>
+        /// Save json text in the file if file name is passed and text is provided.
+        /// </summary>
+        /// <param name="fileName">File name for a file where json text should be saved</param>
+        /// <returns>true - if checks were passed and file was created or updated successfully</returns>
+        private bool SaveJsonToFile(string fileName)
+        {
+            bool resultValue = false;
+
+            try
+            {
+                if (fileName.Length > 0 && originalFileText.Text.Length > 0)
+                {
+                    File.WriteAllText(fileName, originalFileText.Text);
+                    resultValue = true;
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message, "Write to file exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return resultValue;
+        }
+
+        private void saveMenuItem_Click(object sender, EventArgs e)
+        {
+            if ( SaveJsonToFile(jsonFileName) )
+            {
+                // file was saved successfully
+
+                // Re-load text from text window first
+                LoadNodesFromTextWindow();
+
+                // update file changing indicator and disable Save menu item
+                fileWasChanged = false;
+                saveMenuItem.Enabled = false;
+
+                UpdateWindowCaption();
+            }
+        }
+
+        private void saveAsMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            DialogResult dlgResult = dlg.ShowDialog();
+            if (dlgResult == DialogResult.OK)
+            {
+                // Save json file 
+                if (SaveJsonToFile(dlg.FileName)) // jsonFileName
+                {
+                    // file was saved successfully. Load it again
+                    LoadFileByName(dlg.FileName);
+                }
+            }   
         }
     }
 }
