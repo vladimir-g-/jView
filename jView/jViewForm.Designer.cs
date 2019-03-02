@@ -45,7 +45,7 @@
             this.jNodesTree = new System.Windows.Forms.TreeView();
             this.treeImageList = new System.Windows.Forms.ImageList(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.originalFileText = new System.Windows.Forms.TextBox();
+            this.originalFileText = new System.Windows.Forms.RichTextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -85,7 +85,7 @@
             // OpenMenuItem
             // 
             this.OpenMenuItem.Name = "OpenMenuItem";
-            this.OpenMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OpenMenuItem.Size = new System.Drawing.Size(123, 22);
             this.OpenMenuItem.Text = "Open";
             this.OpenMenuItem.ToolTipText = "Open file";
             this.OpenMenuItem.Click += new System.EventHandler(this.OpenMenuItem_Click);
@@ -94,7 +94,7 @@
             // 
             this.saveMenuItem.Enabled = false;
             this.saveMenuItem.Name = "saveMenuItem";
-            this.saveMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveMenuItem.Text = "Save";
             this.saveMenuItem.Click += new System.EventHandler(this.saveMenuItem_Click);
             // 
@@ -102,19 +102,19 @@
             // 
             this.saveAsMenuItem.Enabled = false;
             this.saveAsMenuItem.Name = "saveAsMenuItem";
-            this.saveAsMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsMenuItem.Size = new System.Drawing.Size(123, 22);
             this.saveAsMenuItem.Text = "Save As...";
             this.saveAsMenuItem.Click += new System.EventHandler(this.saveAsMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(120, 6);
             // 
             // ExitMenuItem
             // 
             this.ExitMenuItem.Name = "ExitMenuItem";
-            this.ExitMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitMenuItem.Size = new System.Drawing.Size(123, 22);
             this.ExitMenuItem.Text = "Exit";
             this.ExitMenuItem.ToolTipText = "Close program";
             this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
@@ -210,21 +210,16 @@
             // 
             // originalFileText
             // 
-            this.originalFileText.AllowDrop = true;
+            this.originalFileText.AcceptsTab = true;
             this.originalFileText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.originalFileText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.originalFileText.Location = new System.Drawing.Point(0, 3);
-            this.originalFileText.Margin = new System.Windows.Forms.Padding(2);
-            this.originalFileText.Multiline = true;
             this.originalFileText.Name = "originalFileText";
-            this.originalFileText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.originalFileText.Size = new System.Drawing.Size(496, 218);
             this.originalFileText.TabIndex = 0;
+            this.originalFileText.Text = "";
             this.originalFileText.TextChanged += new System.EventHandler(this.originalFileText_TextChanged);
-            this.originalFileText.DragDrop += new System.Windows.Forms.DragEventHandler(this.originalFileText_DragDrop);
-            this.originalFileText.DragEnter += new System.Windows.Forms.DragEventHandler(this.originalFileText_DragEnter);
             // 
             // toolStrip1
             // 
@@ -294,7 +289,6 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -314,7 +308,6 @@
         private System.Windows.Forms.TreeView jNodesTree;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton OpenFileButton;
-        private System.Windows.Forms.TextBox originalFileText;
         private System.Windows.Forms.ImageList treeImageList;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SearchNodeMenuItem;
@@ -325,6 +318,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveAsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.RichTextBox originalFileText;
     }
 }
 
