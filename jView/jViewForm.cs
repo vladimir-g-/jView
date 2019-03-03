@@ -323,6 +323,12 @@ namespace jView
         public jViewForm()
         {
             InitializeComponent();
+
+            // Add drah-ndrop support for RichTextBox manually
+            originalFileText.AllowDrop = true;
+            originalFileText.DragEnter += new DragEventHandler(originalFileText_DragEnter);
+            originalFileText.DragDrop += new DragEventHandler(originalFileText_DragDrop);
+
         }
 
         private void ExitMenuItem_Click(object sender, EventArgs e)
