@@ -324,7 +324,7 @@ namespace jView
         {
             InitializeComponent();
 
-            // Add drah-ndrop support for RichTextBox manually
+            // Add drag-n-drop support for RichTextBox manually
             originalFileText.AllowDrop = true;
             originalFileText.DragEnter += new DragEventHandler(originalFileText_DragEnter);
             originalFileText.DragDrop += new DragEventHandler(originalFileText_DragDrop);
