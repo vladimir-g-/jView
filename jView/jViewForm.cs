@@ -648,5 +648,37 @@ namespace jView
                 }
             }   
         }
+
+        private void treeNodetMenuStrip_Opening(object sender, CancelEventArgs e)
+        {
+            // check node items count. In case of something was loaded we should have 1 root node and some child nodes
+            if (jNodesTree.Nodes.Count > 0)
+            {
+                // Something was loaded, lets show context menu
+                e.Cancel = false;
+            }
+            else
+                e.Cancel = true;
+        }
+
+        private void expandNodeMenuItem_Click(object sender, EventArgs e)
+        {
+            // check if any tree node is selected
+            TreeNode selectedNode = jNodesTree.SelectedNode;
+            if (selectedNode != null)
+            {
+                selectedNode.ExpandAll();
+            }
+        }
+
+        private void collapseNodesMenuItem_Click(object sender, EventArgs e)
+        {
+            // check if any tree node is selected
+            TreeNode selectedNode = jNodesTree.SelectedNode;
+            if (selectedNode != null)
+            {
+                selectedNode.Collapse(false);
+            }
+        }
     }
 }
