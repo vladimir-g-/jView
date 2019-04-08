@@ -21,7 +21,7 @@ namespace jView
 
     public partial class jViewForm : Form
     {
-        private string jsonFileName; // name of currently loaded file
+        private string jsonFileName = ""; // name of currently loaded file
         private static List<TreeNode> searchResultNodes = new List<TreeNode>();
         private static int selectedNode = -1; // index of tree node which were selected during searching. -1 means no search was done before
         private static int nodesFound = -1; // Number of nodes were found during search. -1 means no search was done before
@@ -347,6 +347,7 @@ namespace jView
             //
             GetFile();
         }
+
         private void LoadDroppedFile(DragEventArgs e)
         {
             //
@@ -576,8 +577,15 @@ namespace jView
                 fileWasChanged = true;
                 UpdateWindowCaption();
 
-                // enable save menu items
-                saveMenuItem.Enabled = true;
+                // enable save menu items, if needed
+                if (jsonFileName.Length > 0)
+                {
+                    saveMenuItem.Enabled = true;
+                }
+                else
+                {
+                    saveMenuItem.Enabled = false;
+                }
                 saveAsMenuItem.Enabled = true;
             }
         }
