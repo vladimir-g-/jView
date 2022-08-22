@@ -46,7 +46,7 @@ namespace jView
         {
             string newWindowCaption = jsonFileName;
 
-            if (fileWasChanged == true)
+            if (fileWasChanged)
                 newWindowCaption += " (*)";
 
             this.Text = newWindowCaption;
