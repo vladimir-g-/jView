@@ -15,12 +15,12 @@ namespace jView
         private FindByTextFunction searchByText; // delegate for calling search functionality
         private ClearSearchResults clearSearchResults; // delegeate for calling functionality of clearing search results in object whick called this window
 
-        public SearchForm(FindByTextFunction func, ClearSearchResults funcClear)
+        public SearchForm(FindByTextFunction findFunction, ClearSearchResults clearSearchResultFunction)
         {
             InitializeComponent();
 
-            searchByText = func;
-            clearSearchResults = funcClear;
+            searchByText = findFunction;
+            clearSearchResults = clearSearchResultFunction;
         }
 
         private void CloseSearchDialogButton_Click(object sender, EventArgs e)
