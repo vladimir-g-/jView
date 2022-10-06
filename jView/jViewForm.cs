@@ -684,5 +684,11 @@ namespace jView
                 selectedNode.Collapse(false);
             }
         }
+
+        private void aboutMenuItem_Click(object sender, EventArgs e)
+        {
+            // Show 'About' dialog
+            new AboutForm().ShowDialog();
+        }
     }
 }

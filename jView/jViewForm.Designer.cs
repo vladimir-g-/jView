@@ -43,6 +43,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.jNodesTree = new System.Windows.Forms.TreeView();
+            this.treeNodetMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.expandNodeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.collapseNodesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeImageList = new System.Windows.Forms.ImageList(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.originalFileText = new System.Windows.Forms.RichTextBox();
@@ -51,15 +54,13 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.loadFromTextButton = new System.Windows.Forms.ToolStripButton();
-            this.treeNodetMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.expandNodeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.collapseNodesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.treeNodetMenuStrip.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.treeNodetMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -67,7 +68,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.searchToolStripMenuItem});
+            this.searchToolStripMenuItem,
+            this.aboutMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(505, 24);
@@ -129,14 +131,14 @@
             this.SearchNodeMenuItem,
             this.reloadTreeFromTextMenuItem});
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.searchToolStripMenuItem.Text = "Tools";
             // 
             // SearchNodeMenuItem
             // 
             this.SearchNodeMenuItem.Image = global::jView.Properties.Resources.Search2_48;
             this.SearchNodeMenuItem.Name = "SearchNodeMenuItem";
-            this.SearchNodeMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.SearchNodeMenuItem.Size = new System.Drawing.Size(185, 22);
             this.SearchNodeMenuItem.Text = "Search Node";
             this.SearchNodeMenuItem.ToolTipText = "Search Node in the Tree";
             this.SearchNodeMenuItem.Click += new System.EventHandler(this.SearchNodeMenuItem_Click);
@@ -145,7 +147,7 @@
             // 
             this.reloadTreeFromTextMenuItem.Image = global::jView.Properties.Resources.refresh;
             this.reloadTreeFromTextMenuItem.Name = "reloadTreeFromTextMenuItem";
-            this.reloadTreeFromTextMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.reloadTreeFromTextMenuItem.Size = new System.Drawing.Size(185, 22);
             this.reloadTreeFromTextMenuItem.Text = "Reload tree from text";
             this.reloadTreeFromTextMenuItem.ToolTipText = "Refresh tree from text";
             this.reloadTreeFromTextMenuItem.Click += new System.EventHandler(this.reloadTreeFromTextToolMenuItem_Click);
@@ -190,6 +192,31 @@
             this.jNodesTree.TabIndex = 0;
             this.jNodesTree.DragDrop += new System.Windows.Forms.DragEventHandler(this.jNodesTree_DragDrop);
             this.jNodesTree.DragEnter += new System.Windows.Forms.DragEventHandler(this.jNodesTree_DragEnter);
+            // 
+            // treeNodetMenuStrip
+            // 
+            this.treeNodetMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.expandNodeMenuItem,
+            this.collapseNodesMenuItem});
+            this.treeNodetMenuStrip.Name = "treeNodetMenuStrip";
+            this.treeNodetMenuStrip.Size = new System.Drawing.Size(137, 48);
+            this.treeNodetMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.treeNodetMenuStrip_Opening);
+            // 
+            // expandNodeMenuItem
+            // 
+            this.expandNodeMenuItem.Name = "expandNodeMenuItem";
+            this.expandNodeMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.expandNodeMenuItem.Text = "Expand All";
+            this.expandNodeMenuItem.ToolTipText = "Expand a node including all child nodes";
+            this.expandNodeMenuItem.Click += new System.EventHandler(this.expandNodeMenuItem_Click);
+            // 
+            // collapseNodesMenuItem
+            // 
+            this.collapseNodesMenuItem.Name = "collapseNodesMenuItem";
+            this.collapseNodesMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.collapseNodesMenuItem.Text = "Collapse All";
+            this.collapseNodesMenuItem.ToolTipText = "Collape a node including all child nodes";
+            this.collapseNodesMenuItem.Click += new System.EventHandler(this.collapseNodesMenuItem_Click);
             // 
             // treeImageList
             // 
@@ -277,30 +304,13 @@
             this.loadFromTextButton.ToolTipText = "Refresh tree from text";
             this.loadFromTextButton.Click += new System.EventHandler(this.loadFromTextButton_Click);
             // 
-            // treeNodetMenuStrip
+            // aboutMenuItem
             // 
-            this.treeNodetMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.expandNodeMenuItem,
-            this.collapseNodesMenuItem});
-            this.treeNodetMenuStrip.Name = "treeNodetMenuStrip";
-            this.treeNodetMenuStrip.Size = new System.Drawing.Size(181, 70);
-            this.treeNodetMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.treeNodetMenuStrip_Opening);
-            // 
-            // expandNodeMenuItem
-            // 
-            this.expandNodeMenuItem.Name = "expandNodeMenuItem";
-            this.expandNodeMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.expandNodeMenuItem.Text = "Expand All";
-            this.expandNodeMenuItem.ToolTipText = "Expand a node including all child nodes";
-            this.expandNodeMenuItem.Click += new System.EventHandler(this.expandNodeMenuItem_Click);
-            // 
-            // collapseNodesMenuItem
-            // 
-            this.collapseNodesMenuItem.Name = "collapseNodesMenuItem";
-            this.collapseNodesMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.collapseNodesMenuItem.Text = "Collapse All";
-            this.collapseNodesMenuItem.ToolTipText = "Collape a node including all child nodes";
-            this.collapseNodesMenuItem.Click += new System.EventHandler(this.collapseNodesMenuItem_Click);
+            this.aboutMenuItem.Name = "aboutMenuItem";
+            this.aboutMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutMenuItem.Text = "About";
+            this.aboutMenuItem.ToolTipText = "Show about information";
+            this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
             // jViewForm
             // 
@@ -318,10 +328,10 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.treeNodetMenuStrip.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.treeNodetMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,6 +363,7 @@
         private System.Windows.Forms.ContextMenuStrip treeNodetMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem expandNodeMenuItem;
         private System.Windows.Forms.ToolStripMenuItem collapseNodesMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
     }
 }
 
