@@ -432,7 +432,7 @@ namespace jView
         /// <returns>Number of nodes containig specified text were found.</returns>
         private int FindNodeByText(string searchText, SearchOptions options)
         {
-            if (searchText.Length > 0)
+            if (searchText.Length > 0 && jNodesTree.Nodes.Count > 0)
             {
                 // Check whether we did search before AND tree contains any node
                 if (selectedNode == -1 && jNodesTree.Nodes.Count > 0)
