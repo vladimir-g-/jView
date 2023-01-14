@@ -40,6 +40,10 @@
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchNodeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reloadTreeFromTextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configureFontsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeTreeFontMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeTextFontMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.jNodesTree = new System.Windows.Forms.TreeView();
@@ -54,7 +58,6 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.loadFromTextButton = new System.Windows.Forms.ToolStripButton();
-            this.aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -129,7 +132,8 @@
             // 
             this.searchToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SearchNodeMenuItem,
-            this.reloadTreeFromTextMenuItem});
+            this.reloadTreeFromTextMenuItem,
+            this.configureFontsMenuItem});
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
             this.searchToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.searchToolStripMenuItem.Text = "Tools";
@@ -138,7 +142,7 @@
             // 
             this.SearchNodeMenuItem.Image = global::jView.Properties.Resources.Search2_48;
             this.SearchNodeMenuItem.Name = "SearchNodeMenuItem";
-            this.SearchNodeMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.SearchNodeMenuItem.Size = new System.Drawing.Size(189, 26);
             this.SearchNodeMenuItem.Text = "Search Node";
             this.SearchNodeMenuItem.ToolTipText = "Search Node in the Tree";
             this.SearchNodeMenuItem.Click += new System.EventHandler(this.SearchNodeMenuItem_Click);
@@ -147,10 +151,41 @@
             // 
             this.reloadTreeFromTextMenuItem.Image = global::jView.Properties.Resources.refresh;
             this.reloadTreeFromTextMenuItem.Name = "reloadTreeFromTextMenuItem";
-            this.reloadTreeFromTextMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.reloadTreeFromTextMenuItem.Size = new System.Drawing.Size(189, 26);
             this.reloadTreeFromTextMenuItem.Text = "Reload tree from text";
             this.reloadTreeFromTextMenuItem.ToolTipText = "Refresh tree from text";
             this.reloadTreeFromTextMenuItem.Click += new System.EventHandler(this.reloadTreeFromTextToolMenuItem_Click);
+            // 
+            // configureFontsMenuItem
+            // 
+            this.configureFontsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changeTreeFontMenuItem,
+            this.changeTextFontMenuItem});
+            this.configureFontsMenuItem.Name = "configureFontsMenuItem";
+            this.configureFontsMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.configureFontsMenuItem.Text = "Configure Fonts";
+            // 
+            // changeTreeFontMenuItem
+            // 
+            this.changeTreeFontMenuItem.Name = "changeTreeFontMenuItem";
+            this.changeTreeFontMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeTreeFontMenuItem.Text = "Change Tree Font";
+            this.changeTreeFontMenuItem.Click += new System.EventHandler(this.changeTreeFontMenuItem_Click);
+            // 
+            // changeTextFontMenuItem
+            // 
+            this.changeTextFontMenuItem.Name = "changeTextFontMenuItem";
+            this.changeTextFontMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeTextFontMenuItem.Text = "Change Text Font";
+            this.changeTextFontMenuItem.Click += new System.EventHandler(this.changeTextFontMenuItem_Click);
+            // 
+            // aboutMenuItem
+            // 
+            this.aboutMenuItem.Name = "aboutMenuItem";
+            this.aboutMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutMenuItem.Text = "About";
+            this.aboutMenuItem.ToolTipText = "Show about information";
+            this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -304,14 +339,6 @@
             this.loadFromTextButton.ToolTipText = "Refresh tree from text";
             this.loadFromTextButton.Click += new System.EventHandler(this.loadFromTextButton_Click);
             // 
-            // aboutMenuItem
-            // 
-            this.aboutMenuItem.Name = "aboutMenuItem";
-            this.aboutMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutMenuItem.Text = "About";
-            this.aboutMenuItem.ToolTipText = "Show about information";
-            this.aboutMenuItem.Click += new System.EventHandler(this.aboutMenuItem_Click);
-            // 
             // jViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -364,6 +391,9 @@
         private System.Windows.Forms.ToolStripMenuItem expandNodeMenuItem;
         private System.Windows.Forms.ToolStripMenuItem collapseNodesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configureFontsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeTreeFontMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeTextFontMenuItem;
     }
 }
 

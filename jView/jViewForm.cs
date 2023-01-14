@@ -24,6 +24,9 @@ namespace jView
 
         private bool fileWasChanged = false;
 
+        private string configFileName = "jView.cfg"; // Config file name
+        private AppConfig config;
+
         private void GetFile()
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -319,6 +322,9 @@ namespace jView
         public jViewForm()
         {
             InitializeComponent();
+
+            // Load configuration settings from config file
+            LoadConfiguration();
 
             // Add drag-n-drop support for RichTextBox manually
             originalFileText.AllowDrop = true;
@@ -689,6 +695,100 @@ namespace jView
         {
             // Show 'About' dialog
             new AboutForm().ShowDialog();
+        }
+
+        private string GetCurrentPath()
+        {
+            return System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+        }
+
+        /// <summary>
+        /// Returns config file path
+        /// </summary>
+        /// <returns></returns>
+        private string GetConfigFilePath()
+        {
+            return GetCurrentPath() + "\\" + configFileName;
+        }
+
+        /// <summary>
+        /// Load vonfiguratio from config file
+        /// </summary>
+        private void LoadConfiguration()
+        {
+            // Check if config file exists in current directory
+
+            config = new AppConfig();
+
+            if (File.Exists(GetConfigFilePath()))
+            {
+                // Load config from file
+                string serializedConfig = File.ReadAllText(GetConfigFilePath());
+                if (serializedConfig.Length > 0) 
+                {
+                    // Deserialize json
+                    config = JsonConvert.DeserializeObject<AppConfig>(serializedConfig);
+
+                    jNodesTree.Font = config.treeFont;
+                    originalFileText.Font = config.fileTextFont;
+                }
+            }
+            else
+            {
+                // Put default config settings and save config file
+                SaveConfiguration();
+            }
+        }
+
+        private void SaveConfiguration()
+        {
+            // 
+            config.treeFont = jNodesTree.Font;
+            config.fileTextFont = originalFileText.Font;
+
+            string json = JsonConvert.SerializeObject(config, Formatting.Indented);
+
+            try
+            {
+                File.WriteAllText(GetConfigFilePath(), json);
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show(ex.Message, "Error during saving configuration", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void changeTreeFontMenuItem_Click(object sender, EventArgs e)
+        {
+            FontDialog dlg = new FontDialog();
+
+            dlg.Font = jNodesTree.Font;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                // A font was choosen
+                jNodesTree.Font = dlg.Font;
+
+                SaveConfiguration();
+            }
+        }
+
+        private void changeTextFontMenuItem_Click(object sender, EventArgs e)
+        {
+            FontDialog dlg = new FontDialog();
+
+            dlg.Font = originalFileText.Font;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                // A font was choosen
+                originalFileText.Font = dlg.Font;
+
+                SaveConfiguration();
+
+                // This generates changing text event in the window. Need to make workaround on it because we don't change the text
+            }
         }
     }
 }

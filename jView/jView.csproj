@@ -98,6 +98,7 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppConfig.cs" />
     <Compile Include="jViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +119,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="jViewForm.resx">
       <DependentUpon>jViewForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -149,10 +151,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\refresh.png" />
+    <EmbeddedResource Include="Resources\refresh.png" />
     <None Include="json_tree.ico" />
-    <None Include="Resources\Search2-48.png" />
-    <None Include="Resources\Search-48.png" />
+    <EmbeddedResource Include="Resources\Search2-48.png" />
+    <EmbeddedResource Include="Resources\Search-48.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
