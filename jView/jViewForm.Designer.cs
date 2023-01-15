@@ -176,8 +176,8 @@
             // changeTextFontMenuItem
             // 
             this.changeTextFontMenuItem.Name = "changeTextFontMenuItem";
-            this.changeTextFontMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.changeTextFontMenuItem.Text = "Change Text Font";
+            this.changeTextFontMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.changeTextFontMenuItem.Text = "Change Source Font";
             this.changeTextFontMenuItem.ToolTipText = "Change font in the source view";
             this.changeTextFontMenuItem.Click += new System.EventHandler(this.changeTextFontMenuItem_Click);
             // 
