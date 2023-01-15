@@ -142,7 +142,7 @@
             // 
             this.SearchNodeMenuItem.Image = global::jView.Properties.Resources.Search2_48;
             this.SearchNodeMenuItem.Name = "SearchNodeMenuItem";
-            this.SearchNodeMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.SearchNodeMenuItem.Size = new System.Drawing.Size(185, 22);
             this.SearchNodeMenuItem.Text = "Search Node";
             this.SearchNodeMenuItem.ToolTipText = "Search Node in the Tree";
             this.SearchNodeMenuItem.Click += new System.EventHandler(this.SearchNodeMenuItem_Click);
@@ -151,7 +151,7 @@
             // 
             this.reloadTreeFromTextMenuItem.Image = global::jView.Properties.Resources.refresh;
             this.reloadTreeFromTextMenuItem.Name = "reloadTreeFromTextMenuItem";
-            this.reloadTreeFromTextMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.reloadTreeFromTextMenuItem.Size = new System.Drawing.Size(185, 22);
             this.reloadTreeFromTextMenuItem.Text = "Reload tree from text";
             this.reloadTreeFromTextMenuItem.ToolTipText = "Refresh tree from text";
             this.reloadTreeFromTextMenuItem.Click += new System.EventHandler(this.reloadTreeFromTextToolMenuItem_Click);
@@ -170,6 +170,7 @@
             this.changeTreeFontMenuItem.Name = "changeTreeFontMenuItem";
             this.changeTreeFontMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changeTreeFontMenuItem.Text = "Change Tree Font";
+            this.changeTreeFontMenuItem.ToolTipText = "Change font in the tree view";
             this.changeTreeFontMenuItem.Click += new System.EventHandler(this.changeTreeFontMenuItem_Click);
             // 
             // changeTextFontMenuItem
@@ -177,6 +178,7 @@
             this.changeTextFontMenuItem.Name = "changeTextFontMenuItem";
             this.changeTextFontMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changeTextFontMenuItem.Text = "Change Text Font";
+            this.changeTextFontMenuItem.ToolTipText = "Change font in the source view";
             this.changeTextFontMenuItem.Click += new System.EventHandler(this.changeTextFontMenuItem_Click);
             // 
             // aboutMenuItem
@@ -272,7 +274,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(497, 221);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Text";
+            this.tabPage2.Text = "Source";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // originalFileText

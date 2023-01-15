@@ -782,12 +782,26 @@ namespace jView
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
+                // Save file modification indicator
+                bool previousFileChangeIndocator = fileWasChanged;
+                string previousWindowCaption = this.Text;
+
                 // A font was choosen
                 originalFileText.Font = dlg.Font;
 
                 SaveConfiguration();
 
-                // This generates changing text event in the window. Need to make workaround on it because we don't change the text
+                // Restore file modification indicator
+                fileWasChanged = previousFileChangeIndocator;
+
+                if (jsonFileName != "")
+                {
+                    UpdateWindowCaption();
+                }
+                else
+                {
+                    this.Text = previousWindowCaption;
+                }
             }
         }
     }
